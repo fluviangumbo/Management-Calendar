@@ -1,8 +1,5 @@
 // global variables
 
-// need to decide if built in HTML or if rendered each time, stretch goals?
-//function renderCalendar() {}
-
 function renderTasks() {
     // TODO: Write function that renders tasks to calendar
 
@@ -17,12 +14,11 @@ function renderStats() {
     //Display to page
 }
 
-// Do we want to render some basic stats on tasks/hours/team-members?
-// function renderStats() {}
-
 function addTask(event) { //will need an event listener for button
     event.preventDefault();
     // TODO: Input from mngr/user (modal/sidebar? popup?)
+        // Start time: value
+        // Duration: value
 
     // Store this in localStorage with other tasks
 
@@ -48,6 +44,5 @@ function addTeamMember(event) { //eventlistener
     renderStats();
 }
 
-renderCalendar();
 renderTasks();
 renderStats();
