@@ -1,4 +1,7 @@
 // global variables
+const toggleBtn = document.querySelector('#toggle');
+const mode = localStorage.getItem('mode')
+//above are the vars for the darkmode toggle, it stores and calls the mode locally
 
 function renderTasks() {
     // TODO: Write function that renders tasks to calendar
@@ -43,6 +46,36 @@ function addTeamMember(event) { //eventlistener
     renderTasks();
     renderStats();
 }
+
+//below is light/dark toggle for the page, new consts will be at the top.
+
+function lastKnownMode () {
+    document.body.className = mode;
+    if (mode === 'light') {
+      toggleBtn.textContent = '☀️';
+    } else {
+      toggleBtn.textContent = '🌙';
+    }
+  }
+  
+  function darkModeToggle() {
+  
+      if (document.body.className == 'light') {
+        toggleBtn.textContent = '🌙';
+        document.body.className = 'dark';
+        localStorage.setItem('mode', 'dark')
+      } else {
+        toggleBtn.textContent = '☀️';
+        document.body.className = 'light';
+        localStorage.setItem('mode', 'light')
+      }
+  }
+  
+  //button will need id of 'button'.
+  toggleBtn.addEventListener('click', function () {
+    
+    darkModeToggle()
+  })
 
 renderTasks();
 renderStats();
