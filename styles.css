@@ -2,6 +2,25 @@
     dark: ;
 }
 
+
+.row{
+    font-size: larger;
+    font-weight: bold;
+    background-color: rgb(130, 189, 240);
+}
+
+.col{
+    margin: 10px;
+}
+
+.list-group{
+    background-color: white;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: 150;
+    outline: auto;
+}
+
 .dark {
     background-color: ;
 }
