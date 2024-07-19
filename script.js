@@ -1,4 +1,39 @@
 // global variables
+const toggleBtn = document.querySelector('#toggle');
+const mode = localStorage.getItem('mode')
+
+function lastKnownMode () {
+  
+  
+  if (mode === 'light') {
+    document.body.classList.replace('dark', mode);
+    toggleBtn.textContent = '☀️';
+  } else {
+    document.body.classList.replace('light', mode);
+    toggleBtn.textContent = '🌙';
+  }
+}
+
+
+function darkModeToggle() {
+
+    if (document.body.className == 'light') {
+      toggleBtn.textContent = '🌙';
+      document.body.className = 'dark';
+      localStorage.setItem('mode', 'dark');
+    } else {
+      toggleBtn.textContent = '☀️';
+      document.body.className = 'light';
+      localStorage.setItem('mode', 'light');
+    }
+}
+//DARKMODE^^^^^^^^^^^^^^^^^^^^^^^^
+//NEED BUTTON IN HEADER, ID NAMES MATTER
+
+
+toggleBtn.addEventListener('click', darkModeToggle);
+
+
 
 function renderTasks() {
     // TODO: Write function that renders tasks to calendar
@@ -46,3 +81,4 @@ function addTeamMember(event) { //eventlistener
 
 renderTasks();
 renderStats();
+lastKnownMode();
