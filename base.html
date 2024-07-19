@@ -12,27 +12,61 @@
 <body>
     <section class="weekschedule">
         <div class="day" id= "Monday">
-            <h1>Monday</h1>
+            <a href="#modalDay" data-bs-toggle="modal" data-id="Monday" data-bs-target="#modalDay">
+                <h2>Monday</h2>
+            </a>
         </div>
         <div class="day" id= "Tuesday">
-            <h1>Tuesday</h1>
+            <a href="" data-bs-toggle="modal" data-id="Tuesday" data-bs-target="#modalDay">
+                <h2>Tuesday</h2>
+            </a>        
         </div>
         <div class="day" id= "Wednesday">
-            <h1>Wednesday</h1>
+            <a href="" data-bs-toggle="modal" data-id="Wednesday" data-bs-target="#modalDay">
+                <h2>Wednesday</h2>
+            </a>        
         </div>
         <div class="day" id= "Thursday">
-            <h1>Thursday</h1>
+            <a href="" data-bs-toggle="modal" data-id="Thursday" data-bs-target="#modalDay">
+                <h2>Thursday</h2>
+            </a>        
         </div>
         <div class="day" id= "Friday">
-            <h1>Friday</h1>
+            <a href="" data-bs-toggle="modal" data-id="Friday" data-bs-target="#modalDay">
+                <h2>Friday</h2>
+            </a>        
         </div>
         <div class="day" id= "Saturday">
-            <h1>Saturday</h1>
+            <a href="" data-bs-toggle="modal" data-id="Saturday" data-bs-target="#modalDay">
+                <h2>Saturday</h2>
+            </a>        
         </div>
         <div class="day" id= "Sunday">
-            <h1>Sunday</h1>
+            <a href="" data-bs-toggle="modal" data-id="Sunday" data-bs-target="#modalDay">
+                <h2>Sunday</h2>
+            </a>
         </div>
     </section>
+
+    <div class="modal" tabindex="-1" id="modalDay">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="day-focus">
+                    <p>Day you select</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="workstats">
 
