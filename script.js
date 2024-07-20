@@ -78,7 +78,7 @@ function addTeamMember(event) { //eventlistener
     renderTasks();
     renderStats();
 }
-
+//are the below calls necessary with them being called in the above functions?
 renderTasks();
 renderStats();
 lastKnownMode();
