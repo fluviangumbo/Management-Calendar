@@ -51,6 +51,13 @@ function renderStats() {
 
 function addTask(event) { //will need an event listener for button
     event.preventDefault();
+    
+    
+    
+    
+    
+    
+    
     // TODO: Input from mngr/user (modal/sidebar? popup?)
         // Start time: value
         // Duration: value
