@@ -77,7 +77,7 @@ function addTask(event) {
   if (!taskNameInp.value) {
     const errorEl = document.querySelector('#error');
     errorEl.textContent = "Cannot be Blank."
-    return console.log(taskData);
+    return;
   }
 
   const taskName = {
