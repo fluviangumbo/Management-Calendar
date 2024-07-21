@@ -1,6 +1,14 @@
 // global variables
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode')
+const daylinks = document.querySelectorAll('.dayLink')
+
+daylinks.forEach((link) => {
+  link.addEventListener("click", function(event){
+    location.assign(`day.html?day=${event.target.dataset.id}`)
+  })
+} )
+
 
 function lastKnownMode () {
   
@@ -85,6 +93,8 @@ function addTeamMember(event) { //eventlistener
     renderTasks();
     renderStats();
 }
+
+
 //are the below calls necessary with them being called in the above functions?
 renderTasks();
 renderStats();
