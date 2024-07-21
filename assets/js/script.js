@@ -7,9 +7,9 @@ const daylinks = document.querySelectorAll('.dayLink');
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 //task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
-const lastNameInp = document.querySelector('#lastNameInp');
 const firstNameInp = document.querySelector('#firstNameInp');
-
+const lastNameInp = document.querySelector('#lastNameInp');
+//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
@@ -96,11 +96,11 @@ function addTask(event) {
 
 
 function empStoreLocalStorage(newEmpData) {
-  let existingEmpData = localStorage.getItem('empData');
+  let existingEmpData = localStorage.getItem('empsData');
   let empData = existingEmpData ? JSON.parse(existingEmpData) : [];
   empData.push(newEmpData);
   let updatedEmpData = JSON.stringify(empData);
-  localStorage.setItem('empData', updatedEmpData)
+  localStorage.setItem('empsData', updatedEmpData)
 }
 
 function addEmp(event) {
@@ -108,18 +108,19 @@ function addEmp(event) {
 
   if (!firstNameInp.value || !lastNameInp.value) {
     const errorEl = document.querySelector('#error');
-    errorEl.textContent = "Cannot be Blank."
+    errorEl.textContent = "First and Last name required."
     return;
   }
 
-  const taskName = {
-    task: taskNameInp.value,
+  const empData = {
+    firstName: firstNameInp.value,
+    lastName: lastNameInp.value,
   };
 
-  taskStoreLocalStorage(taskName);
+  empStoreLocalStorage(empData);
 
 
-  document.getElementById("taskInputForm").reset();
+  document.getElementById("employeeInputForm").reset();
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
