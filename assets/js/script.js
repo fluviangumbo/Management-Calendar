@@ -1,13 +1,16 @@
 // global variables
 const toggleBtn = document.querySelector('#toggle');
-const mode = localStorage.getItem('mode')
+const mode = localStorage.getItem('mode');
 //darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-const daylinks = document.querySelectorAll('.dayLink')
+const daylinks = document.querySelectorAll('.dayLink');
 //
-const taskFormEl = document.querySelector('#taskInputForm')
-const taskNameInp = document.querySelector('#TaskNameInp')
+const taskFormEl = document.querySelector('#taskInputForm');
+const taskNameInp = document.querySelector('#TaskNameInp');
 //task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+const empFormEl = document.querySelector('#employeeInputForm')
+const firstNameInp = document.querySelector('#firstNameInp');
+const lastNameInp = document.querySelector('#lastNameInp');
+//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
@@ -77,7 +80,7 @@ function addTask(event) {
   if (!taskNameInp.value) {
     const errorEl = document.querySelector('#error');
     errorEl.textContent = "Cannot be Blank."
-    return console.log(taskData);
+    return;
   }
 
   const taskName = {
@@ -92,27 +95,59 @@ function addTask(event) {
   //renderStats();
 }
 
-taskFormEl.addEventListener('submit', addTask);
 
-
-
-function addTeamMember(event) { //eventlistener
-  event.preventDefault();
-  // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
-  let newMember = true;
-
-  while (newMember) {
-    //Input here (task assignment?)
-
-    //Store client-side
-
-    //See if we will add more, if no
-
-    newMember = false;
-  }
-  renderTasks();
-  renderStats();
+function empStoreLocalStorage(newEmpData) {
+  let existingEmpData = localStorage.getItem('empsData');
+  let empData = existingEmpData ? JSON.parse(existingEmpData) : [];
+  empData.push(newEmpData);
+  let updatedEmpData = JSON.stringify(empData);
+  localStorage.setItem('empsData', updatedEmpData)
 }
+
+function addEmp(event) {
+  event.preventDefault();
+
+  if (!firstNameInp.value || !lastNameInp.value) {
+    const empErrorEl = document.querySelector('#empError');
+    empErrorEl.textContent = "Name Fields required." //string cant be too long or it wont show.
+    return;
+  }
+
+  const empData = {
+    firstName: firstNameInp.value,
+    lastName: lastNameInp.value,
+  };
+
+  empStoreLocalStorage(empData);
+
+
+  document.getElementById("employeeInputForm").reset();
+  //renderTasks();  i think these will go in day.js and will be called when the page is switched
+  //renderStats();
+}
+
+
+taskFormEl.addEventListener('submit', addTask);
+empFormEl.addEventListener('submit', addEmp);
+
+
+// function addTeamMember(event) { //eventlistener
+//   event.preventDefault();
+//   // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
+//   let newMember = true;
+
+//   while (newMember) {
+//     //Input here (task assignment?)
+
+//     //Store client-side
+
+//     //See if we will add more, if no
+
+//     newMember = false;
+//   }
+//   renderTasks();
+//   renderStats();
+// }
 
 
 //are the below calls necessary with them being called in the above functions?
