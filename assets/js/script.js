@@ -7,6 +7,7 @@ const daylinks = document.querySelectorAll('.dayLink');
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 //task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
+const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 //employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
