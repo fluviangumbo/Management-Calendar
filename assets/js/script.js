@@ -1,12 +1,14 @@
 // global variables
 const toggleBtn = document.querySelector('#toggle');
-const mode = localStorage.getItem('mode')
+const mode = localStorage.getItem('mode');
 //darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-const daylinks = document.querySelectorAll('.dayLink')
+const daylinks = document.querySelectorAll('.dayLink');
 //
-const taskFormEl = document.querySelector('#taskInputForm')
-const taskNameInp = document.querySelector('#TaskNameInp')
+const taskFormEl = document.querySelector('#taskInputForm');
+const taskNameInp = document.querySelector('#TaskNameInp');
 //task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
+const lastNameInp = document.querySelector('#lastNameInp');
+const firstNameInp = document.querySelector('#firstNameInp');
 
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 daylinks.forEach((link) => {
@@ -92,27 +94,58 @@ function addTask(event) {
   //renderStats();
 }
 
-taskFormEl.addEventListener('submit', addTask);
 
-
-
-function addTeamMember(event) { //eventlistener
-  event.preventDefault();
-  // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
-  let newMember = true;
-
-  while (newMember) {
-    //Input here (task assignment?)
-
-    //Store client-side
-
-    //See if we will add more, if no
-
-    newMember = false;
-  }
-  renderTasks();
-  renderStats();
+function empStoreLocalStorage(newEmpData) {
+  let existingEmpData = localStorage.getItem('empData');
+  let empData = existingEmpData ? JSON.parse(existingEmpData) : [];
+  empData.push(newEmpData);
+  let updatedEmpData = JSON.stringify(empData);
+  localStorage.setItem('empData', updatedEmpData)
 }
+
+function addEmp(event) {
+  event.preventDefault();
+
+  if (!firstNameInp.value || !lastNameInp.value) {
+    const errorEl = document.querySelector('#error');
+    errorEl.textContent = "Cannot be Blank."
+    return;
+  }
+
+  const taskName = {
+    task: taskNameInp.value,
+  };
+
+  taskStoreLocalStorage(taskName);
+
+
+  document.getElementById("taskInputForm").reset();
+  //renderTasks();  i think these will go in day.js and will be called when the page is switched
+  //renderStats();
+}
+
+
+taskFormEl.addEventListener('submit', addTask);
+empFormEl.addEventListener('submit', addEmp);
+
+
+// function addTeamMember(event) { //eventlistener
+//   event.preventDefault();
+//   // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
+//   let newMember = true;
+
+//   while (newMember) {
+//     //Input here (task assignment?)
+
+//     //Store client-side
+
+//     //See if we will add more, if no
+
+//     newMember = false;
+//   }
+//   renderTasks();
+//   renderStats();
+// }
 
 
 //are the below calls necessary with them being called in the above functions?
