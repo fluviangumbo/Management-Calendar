@@ -3,10 +3,10 @@ const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode')
 const daylinks = document.querySelectorAll('.dayLink')
 
-const formEl = document.querySelector('#form')
+const taskFormEl = document.querySelector('#taskInputForm')
 const taskNameInp = document.querySelector('#TaskNameInp')
 
-
+//when "day" is clicked, opens day.html?day=*day clicked*
 daylinks.forEach((link) => {
   link.addEventListener("click", function(event){
     location.assign(`day.html?day=${event.target.dataset.id}`)
@@ -62,14 +62,14 @@ function renderStats() {
 }
 
 function taskStoreLocalStorage (newTaskData) {
-  let existingTaskData = localStorage.getItem('TaskData');
-  let blogData = existingTaskData ? JSON.parse(existingTaskData) : [];
-  blogData.push(newTaskData);
-  let updatedTaskData = JSON.stringify(TaskData);
-  localStorage.setItem('blogPosts', updatedTaskData)
+  let existingTaskData = localStorage.getItem('taskNames');
+  let taskData = existingTaskData ? JSON.parse(existingTaskData) : [];
+  taskData.push(newTaskData);
+  let updatedTaskData = JSON.stringify(taskData);
+  localStorage.setItem('taskNames', updatedTaskData)
 }
 
-function addTask(event) { //will need an event listener for button
+function addTask(event) {
     event.preventDefault();
     
     if (!taskNameInp.value) {
@@ -87,6 +87,8 @@ function addTask(event) { //will need an event listener for button
     //renderTasks();
     //renderStats();
 }
+
+taskFormEl.addEventListener('submit', addTask);
 
 function addTeamMember(event) { //eventlistener
     event.preventDefault();
