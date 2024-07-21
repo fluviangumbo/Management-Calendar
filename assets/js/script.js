@@ -1,67 +1,69 @@
 // global variables
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode')
+//darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink')
-
+//
 const taskFormEl = document.querySelector('#taskInputForm')
 const taskNameInp = document.querySelector('#TaskNameInp')
+//task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-//when "day" is clicked, opens day.html?day=*day clicked*
+//when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 daylinks.forEach((link) => {
-  link.addEventListener("click", function(event){
+  link.addEventListener("click", function (event) {
     location.assign(`day.html?day=${event.target.dataset.id}`)
   })
-} )
+});
+
+//darkmode stuff commented out for simplicity sake and debugging
+// function lastKnownMode() {
 
 
-function lastKnownMode () {
-  
-  
-  if (mode === 'light') {
-    document.body.classList.replace('dark', mode);
-    toggleBtn.textContent = '☀️';
-  } else {
-    document.body.classList.replace('light', mode);
-    toggleBtn.textContent = '🌙';
-  }
-}
+//   if (mode === 'light') {
+//     document.body.classList.replace('dark', mode);
+//     toggleBtn.textContent = '☀️';
+//   } else {
+//     document.body.classList.replace('light', mode);
+//     toggleBtn.textContent = '🌙';
+//   }
+// }
 
 
-function darkModeToggle() {
+// function darkModeToggle() {
 
-    if (document.body.className == 'light') {
-      toggleBtn.textContent = '🌙';
-      document.body.className = 'dark';
-      localStorage.setItem('mode', 'dark');
-    } else {
-      toggleBtn.textContent = '☀️';
-      document.body.className = 'light';
-      localStorage.setItem('mode', 'light');
-    }
-}
+//   if (document.body.className == 'light') {
+//     toggleBtn.textContent = '🌙';
+//     document.body.className = 'dark';
+//     localStorage.setItem('mode', 'dark');
+//   } else {
+//     toggleBtn.textContent = '☀️';
+//     document.body.className = 'light';
+//     localStorage.setItem('mode', 'light');
+//   }
+// }
 //DARKMODE^^^^^^^^^^^^^^^^^^^^^^^^
 //NEED BUTTON IN HEADER, ID NAMES MATTER
 
 
-toggleBtn.addEventListener('click', darkModeToggle);
+//toggleBtn.addEventListener('click', darkModeToggle);
 
 
 
 function renderTasks() {
-    // TODO: Write function that renders tasks to calendar
+  // TODO: Write function that renders tasks to calendar
 
-    // create HTML elements
+  // create HTML elements
 
-        // add content to elements from local storage
+  // add content to elements from local storage
 }
 
 function renderStats() {
-    // Pull member stats and task stats from local storage (might calculate in this function)
+  // Pull member stats and task stats from local storage (might calculate in this function)
 
-    //Display to page
+  //Display to page
 }
 
-function taskStoreLocalStorage (newTaskData) {
+function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = localStorage.getItem('taskNames');
   let taskData = existingTaskData ? JSON.parse(existingTaskData) : [];
   taskData.push(newTaskData);
@@ -70,46 +72,50 @@ function taskStoreLocalStorage (newTaskData) {
 }
 
 function addTask(event) {
-    event.preventDefault();
-    
-    if (!taskNameInp.value) {
-      const errorEl = document.querySelector('#error');
-      errorEl.textContent = "Please input new task."
-      return console.log(taskData);
+  event.preventDefault();
+
+  if (!taskNameInp.value) {
+    const errorEl = document.querySelector('#error');
+    errorEl.textContent = "Cannot be Blank."
+    return console.log(taskData);
   }
-      
-      const taskName = {
-          task: taskNameInp.value,
-      };
 
-      taskStoreLocalStorage(taskName);
+  const taskName = {
+    task: taskNameInp.value,
+  };
 
-    //renderTasks();
-    //renderStats();
+  taskStoreLocalStorage(taskName);
+
+
+  document.getElementById("taskInputForm").reset();
+  //renderTasks();  i think these will go in day.js and will be called when the page is switched
+  //renderStats();
 }
 
 taskFormEl.addEventListener('submit', addTask);
 
+
+
 function addTeamMember(event) { //eventlistener
-    event.preventDefault();
-    // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
-    let newMember = true;
+  event.preventDefault();
+  // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
+  let newMember = true;
 
-    while (newMember) {
-        //Input here (task assignment?)
+  while (newMember) {
+    //Input here (task assignment?)
 
-        //Store client-side
+    //Store client-side
 
-        //See if we will add more, if no
+    //See if we will add more, if no
 
-        newMember = false;
-    }
-    renderTasks();
-    renderStats();
+    newMember = false;
+  }
+  renderTasks();
+  renderStats();
 }
 
-formEl.addEventListener('submit', addTask);
+
 //are the below calls necessary with them being called in the above functions?
-renderTasks();
-renderStats();
-lastKnownMode();
+//renderTasks();
+//renderStats();
+//lastKnownMode();

@@ -129,25 +129,25 @@
     <!--below is modal for TASKINPUT=VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-->
     <div class="modal" tabindex="-1" id="modalInputTask">
         <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+            <form class="modal-content" id="taskInputForm">
                 <div class="modal-header">
                     <h5 class="modal-title">Input New Task</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="taskInputForm">
-                        <p>Input New Task</p>
+                    <div>
+                        <p>Store New Task</p>
                         <label for="TaskNameInp" class="form-label">Task Name: </label>
-                        <input type="text" class="form-control" id="TaskNameInp" name="Task">
+                        <input type="text" class="form-control" id="TaskNameInp" >
                         <p id="error"></p>
                     <!--for going past the MVP we add details on the task, for now just the name to start.-->
-                    </form>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="taskCancel">Close</button>
                     <button type="submit" class="btn btn-primary" id="taskSubmit">Submit</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
