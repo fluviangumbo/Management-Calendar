@@ -108,8 +108,8 @@ function addEmp(event) {
   event.preventDefault();
 
   if (!firstNameInp.value || !lastNameInp.value) {
-    const errorEl = document.querySelector('#error');
-    errorEl.textContent = "First and Last name required."
+    const empErrorEl = document.querySelector('#empError');
+    empErrorEl.textContent = "Name Fields required." //string cant be too long or it wont show.
     return;
   }
 
