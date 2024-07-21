@@ -3,6 +3,10 @@ const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode')
 const daylinks = document.querySelectorAll('.dayLink')
 
+const formEl = document.querySelector('#form')
+const taskNameInp = document.querySelector('#TaskNameInp')
+
+
 daylinks.forEach((link) => {
   link.addEventListener("click", function(event){
     location.assign(`day.html?day=${event.target.dataset.id}`)
@@ -57,23 +61,31 @@ function renderStats() {
     //Display to page
 }
 
+function taskStoreLocalStorage (newTaskData) {
+  let existingTaskData = localStorage.getItem('TaskData');
+  let blogData = existingTaskData ? JSON.parse(existingTaskData) : [];
+  blogData.push(newTaskData);
+  let updatedTaskData = JSON.stringify(TaskData);
+  localStorage.setItem('blogPosts', updatedTaskData)
+}
+
 function addTask(event) { //will need an event listener for button
     event.preventDefault();
     
-    
-    
-    
-    
-    
-    
-    // TODO: Input from mngr/user (modal/sidebar? popup?)
-        // Start time: value
-        // Duration: value
+    if (!taskNameInp.value) {
+      const errorEl = document.querySelector('#error');
+      errorEl.textContent = "Please input new task."
+      return console.log(taskData);
+  }
+      
+      const taskName = {
+          task: taskNameInp.value,
+      };
 
-    // Store this in localStorage with other tasks
+      taskStoreLocalStorage(taskName);
 
-    renderTasks();
-    renderStats();
+    //renderTasks();
+    //renderStats();
 }
 
 function addTeamMember(event) { //eventlistener
@@ -94,7 +106,7 @@ function addTeamMember(event) { //eventlistener
     renderStats();
 }
 
-
+formEl.addEventListener('submit', addTask);
 //are the below calls necessary with them being called in the above functions?
 renderTasks();
 renderStats();
