@@ -94,6 +94,7 @@ function taskStoreLocalStorage(newTaskData) {
   localStorage.setItem('taskData', updatedTaskData)
 }
 
+
 function addTask(event) {
   event.preventDefault();
 
@@ -103,8 +104,8 @@ function addTask(event) {
   } else if (!weekdays.includes(taskDayInp.value)) {
     taskIndicatorEl.textContent = "Must enter a day of the week.";
     return;
-  } else if (!(typeof taskStartInp === 'number') || !(typeof taskDurationInp === 'number')) {
-    taskIndicatorEl.textContent = "Pleasae enter only numbers for start and duration."
+  } else if (isNaN(Number(taskStartInp.value)) || isNaN(Number(taskDurationInp.value))) {
+    taskIndicatorEl.textContent = "Please enter only positive numbers for start and duration."
     return;
   }
 
@@ -112,8 +113,8 @@ function addTask(event) {
     task: taskNameInp.value,
     assigned: [],
     day: taskDayInp.value,
-    starttime: taskStartInp.value,
-    duration: taskDurationInp.value,
+    starttime: Number(taskStartInp.value),
+    duration: Number(taskDurationInp.value),
   };
   
   taskStoreLocalStorage(taskData);
