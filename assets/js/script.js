@@ -10,7 +10,9 @@ const taskNameInp = document.querySelector('#TaskNameInp');
 const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
+const taskIndicatorEl = document.querySelector('#taskIndicator');
 //employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+const empIndicatorEl = document.querySelector('#empIndicator');
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
@@ -78,19 +80,23 @@ function addTask(event) {
   event.preventDefault();
 
   if (!taskNameInp.value) {
-    const errorEl = document.querySelector('#error');
-    errorEl.textContent = "Cannot be Blank."
+    taskIndicatorEl.textContent = "Cannot be Blank.";
     return;
   }
 
   const taskName = {
     task: taskNameInp.value,
   };
-
+  
   taskStoreLocalStorage(taskName);
-
-
   document.getElementById("taskInputForm").reset();
+  
+  taskIndicatorEl.textContent = "Success! Add another?";
+
+  setTimeout(function () {
+    taskIndicatorEl.textContent = "";
+  }, 5000);
+
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
@@ -108,8 +114,7 @@ function addEmp(event) {
   event.preventDefault();
 
   if (!firstNameInp.value || !lastNameInp.value) {
-    const empErrorEl = document.querySelector('#empError');
-    empErrorEl.textContent = "Name Fields required." //string cant be too long or it wont show.
+    empIndicatorEl.textContent = "Name Fields required." //string cant be too long or it wont show.
     return;
   }
 
@@ -119,9 +124,15 @@ function addEmp(event) {
   };
 
   empStoreLocalStorage(empData);
-
-
   document.getElementById("employeeInputForm").reset();
+
+  empIndicatorEl.textContent = "Success! Add another?";
+
+  setTimeout(function () {
+    empIndicatorEl.textContent = "";
+  }, 5000);
+
+
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
