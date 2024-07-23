@@ -4,16 +4,29 @@ const mode = localStorage.getItem('mode');
 //darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
 //
+//task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
-//task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
+const taskDayInp = document.querySelector('#TaskDayInp');
+const taskStartInp = document.querySelector('#TaskStartInp');
+const taskDurationInp = document.querySelector('#TaskDurationInp');
+const taskIndicatorEl = document.querySelector('#taskIndicator');
+//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
-const taskIndicatorEl = document.querySelector('#taskIndicator');
-//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const empIndicatorEl = document.querySelector('#empIndicator');
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
+const weekdays = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
     location.assign(`day.html?day=${event.target.dataset.id}`)
@@ -68,27 +81,43 @@ function renderStats() {
   //Display to page
 }
 
+function pullTaskData () { //adding for use on day.html and modals, see pullEmpData()
+  let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
+  return taskList;
+}
+
 function taskStoreLocalStorage(newTaskData) {
-  let existingTaskData = localStorage.getItem('taskNames');
-  let taskData = existingTaskData ? JSON.parse(existingTaskData) : [];
+  let existingTaskData = pullTaskData();
+  let taskData = existingTaskData;
   taskData.push(newTaskData);
   let updatedTaskData = JSON.stringify(taskData);
-  localStorage.setItem('taskNames', updatedTaskData)
+  localStorage.setItem('taskData', updatedTaskData)
 }
+
 
 function addTask(event) {
   event.preventDefault();
 
-  if (!taskNameInp.value) {
+  if (!taskNameInp.value || !taskDayInp.value || !taskStartInp.value || !taskDurationInp.value) {
     taskIndicatorEl.textContent = "Cannot be Blank.";
+    return;
+  } else if (!weekdays.includes(taskDayInp.value)) {
+    taskIndicatorEl.textContent = "Must enter a day of the week.";
+    return;
+  } else if (isNaN(Number(taskStartInp.value)) || isNaN(Number(taskDurationInp.value))) {
+    taskIndicatorEl.textContent = "Please enter only positive numbers for start and duration."
     return;
   }
 
-  const taskName = {
+  const taskData = {
     task: taskNameInp.value,
+    assigned: [],
+    day: taskDayInp.value,
+    starttime: Number(taskStartInp.value),
+    duration: Number(taskDurationInp.value),
   };
   
-  taskStoreLocalStorage(taskName);
+  taskStoreLocalStorage(taskData);
   document.getElementById("taskInputForm").reset();
   
   taskIndicatorEl.textContent = "Success! Add another?";
@@ -101,10 +130,14 @@ function addTask(event) {
   //renderStats();
 }
 
+function pullEmpData () { //adding separate function for multiple calls throughout logic
+  let stored = JSON.parse(localStorage.getItem('empsData')) || [];
+  return stored;
+}
 
 function empStoreLocalStorage(newEmpData) {
-  let existingEmpData = localStorage.getItem('empsData');
-  let empData = existingEmpData ? JSON.parse(existingEmpData) : [];
+  let existingEmpData = pullEmpData();
+  let empData = existingEmpData;
   empData.push(newEmpData);
   let updatedEmpData = JSON.stringify(empData);
   localStorage.setItem('empsData', updatedEmpData)
@@ -118,9 +151,15 @@ function addEmp(event) {
     return;
   }
 
+  console.log(pullEmpData());
+  console.log((pullEmpData()).length);
+
+  let newEmpIndex = pullEmpData().length;
+
   const empData = {
     firstName: firstNameInp.value,
     lastName: lastNameInp.value,
+    index: newEmpIndex,
   };
 
   empStoreLocalStorage(empData);
@@ -137,29 +176,8 @@ function addEmp(event) {
   //renderStats();
 }
 
-
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
-
-
-// function addTeamMember(event) { //eventlistener
-//   event.preventDefault();
-//   // TODO: Mngr/user input, maybe also can store info regarding salary or role stored
-//   let newMember = true;
-
-//   while (newMember) {
-//     //Input here (task assignment?)
-
-//     //Store client-side
-
-//     //See if we will add more, if no
-
-//     newMember = false;
-//   }
-//   renderTasks();
-//   renderStats();
-// }
-
 
 //are the below calls necessary with them being called in the above functions?
 //renderTasks();
