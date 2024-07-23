@@ -26,8 +26,10 @@
     </header>
     <section class="weekschedule">
         <div class="daycontainer text-center">
-            <div class="row" id="weekday">
-                <div class="col">
+            <!--justify-content-center(or space between, start, end etc. sets the 
+            positioning of the boxes, hence why the sunday box is now centered.)-->
+            <div class="row justify-content-center" id="weekday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
                     <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Mon
                     </a>
@@ -37,7 +39,11 @@
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
-                <div class="col">
+                <!--col-sm-6 states window size equal to or greater than 576px will
+                have a width of 6 out of 12. see bs docs on breakpoints for details
+                https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
+                col- defaults to 12 for each set size.-->
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
                     <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Tue
                     </a>
@@ -47,7 +53,7 @@
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
                     <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Wed
                     </a>
@@ -57,7 +63,7 @@
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
                     <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Thur
                     </a>
@@ -67,7 +73,7 @@
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
                     <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Fri
                     </a>
@@ -77,7 +83,7 @@
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
                     <a href="#modalDay" class="" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Sat
                     </a>
@@ -87,7 +93,7 @@
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl">
                     <a href="#modalDay" class="" data-bs-toggle="modal" data-bs-target="#modalDay">
                         Sun
                     </a>
