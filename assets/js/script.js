@@ -134,6 +134,7 @@ function pullEmpData () { //adding separate function for multiple calls througho
   let stored = JSON.parse(localStorage.getItem('empsData')) || [];
   return stored;
 }
+// to pull an employee's specific info: selectedEmpData = pullEmpData()[EMP_INDEX].KEY; pullTaskDat()[no-task-index].KEY;
 
 function empStoreLocalStorage(newEmpData) {
   let existingEmpData = pullEmpData();
