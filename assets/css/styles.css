@@ -12,6 +12,7 @@ a{
 
 header{
     background-color: rgb(185, 215, 240);
+    width:100%;
 }
 
 .btn{
@@ -27,6 +28,7 @@ header{
     font-size: larger;
     font-weight: bold;
     background-color: rgb(130, 189, 240);
+    margin:inherit;
 }
 
 .col{
