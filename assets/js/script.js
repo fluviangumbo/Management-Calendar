@@ -19,7 +19,6 @@ daylinks.forEach((link) => {
     location.assign(`day.html?day=${event.target.dataset.id}`)
   })
 });
-
 //darkmode stuff commented out for simplicity sake and debugging
 // function lastKnownMode() {
 
