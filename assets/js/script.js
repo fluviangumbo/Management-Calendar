@@ -17,6 +17,7 @@ const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
+const empAssignBtn = document.querySelector('#empAssignment')
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -180,9 +181,26 @@ function addEmp(event) {
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
+// create a function that populates the form select element in the offcanvas using the 
+function populateEmpOffCanv() {
+  let selectElement = document.getElementById('#nameSelect');
+  let existingEmpData = pullEmpData();
+  selectElement.innerHTML = '';
+  existingEmpData.forEach(function (employee) {
+    var optionElement = document.createElement('option');
+    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    selectElement.appendChild(optionElement);
+});
+}
+
+
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
+empAssignBtn.addEventListener('click', populateEmpOffCanv);
+
+
+
 
 //are the below calls necessary with them being called in the above functions?
 //renderTasks();

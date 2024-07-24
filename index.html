@@ -197,9 +197,9 @@
         </div>
         <div class="offcanvas-body">
             <h2> Assign Tasks </h2>
-            <div class="dropdown">
-                
-                <select class="form-select">
+            
+            <div>
+                <select id="daySelect" class="form-select">
                   <option id="dropMon" class="dropdown-item">Monday</option>
                   <option id="dropTue" class="dropdown-item">Tuesday</option>
                   <option id="dropWed" class="dropdown-item">Wednesday</option>
@@ -208,13 +208,16 @@
                   <option id="dropSat" class="dropdown-item">Saturday</option>
                   <option id="dropSun" class="dropdown-item">Sunday</option>
                 </select>
-                <select class="form-select">
+                <select id="nameSelect" class="form-select">
                     <option id="dropMon" class="dropdown-item">Joe Cornhole</option>
                   </select>
-                  <select class="form-select">
-                    <option id="dropMon" class="dropdown-item">Cleaning</option>
+                  <select id="taskSelect" class="form-select">
+                    <option id="placeholder" class="dropdown-item">Cleaning</option>
                   </select>
-               <button type="submit" id="assignmentBtn">Assign to Task</button>
+                  <button type="submit" id="assignmentBtn">Assign to Task</button>
+                </div>
+                  
+               
               </div>
             </div>
         </div>
