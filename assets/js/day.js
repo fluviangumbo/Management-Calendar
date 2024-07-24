@@ -4,10 +4,47 @@ const backBtn = document.querySelector('#back');
 const allTasks = pullTaskData();
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
+const rosterEl = document.querySelector('#empDisplay');
 
 const currentDayTasks = allTasks.filter( function (task) {
   return task.day === day 
 });
+
+// TENTATIVE FUNCTIONALITY FOR ROSTER DISPLAY, NEED TO BE ABLE TO ASSIGN TASKS TO TEST
+currentDayEmpByIndex = function () {
+  const roster = [];
+
+  currentDayTasks.forEach(function (assignment) {
+    assignment.assigned.forEach(function (employee) {
+      roster.push(employee);
+    });
+  });
+
+  const empArray = [];
+  
+  roster.forEach(function (index) {
+    if (!empArray.includes(index)) {
+      empArray.push(index);
+    }
+  });
+
+  return empArray;
+};
+
+
+function dayEmployees (assignedArray) {
+  if (assignedArray.length > 0) {
+    assignedArray.forEach(function (working) {
+      const worker = document.createElement('li');
+      worker.textContent = `${allEmps[working].firstName} ${allEmps[working].lastName}`;
+      rosterEl.appendChild(worker);
+    });
+  } else {
+    const noAssigned = document.createElement('li');
+    noAssigned.textContent = "No employees are currently assigned to tasks today.";
+    rosterEl.appendChild(noAssigned);
+  }
+}
 
 
 function buildDay () {
@@ -68,7 +105,6 @@ function taskBuilder (type, task, parentEl) {
 function fetchTaskEmps(assignedEl, dayTask) {
     for(let i = 0; i < allEmps.length; i++) {
       if (dayTask.assigned.includes(i)) {
-        allEmps[i];
         empBuilder('li', allEmps[i], assignedEl);
       }
     }
@@ -92,4 +128,5 @@ const redirectPage = function (url) {
 backBtn.addEventListener('click', function() {redirectPage('index.html')});
 
 
+dayEmployees(currentDayEmpByIndex);
 buildDay();
