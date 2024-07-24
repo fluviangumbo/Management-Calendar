@@ -11,7 +11,7 @@ const currentDayTasks = allTasks.filter( function (task) {
 });
 
 // TENTATIVE FUNCTIONALITY FOR ROSTER DISPLAY, NEED TO BE ABLE TO ASSIGN TASKS TO TEST
- const currentDayEmpByIndex = buildRoster();
+const currentDayEmpByIndex = buildRoster();
  
 function buildRoster () {
   const roster = [];
