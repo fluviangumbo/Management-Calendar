@@ -196,12 +196,12 @@ function populateEmpOffCanv() {
 
 function populateTaskOffCanv() {
   let selectElement = document.getElementById('taskSelect');
-  let existingEmpData = pullTaskData();
+  let existingTaskData = pullTaskData();
   selectElement.innerHTML = '';
   
-  existingEmpData.forEach(function (employee) {
+  existingTaskData.forEach(function (taskData) {
     var optionElement = document.createElement('option');
-    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    optionElement.text = `${taskData.task}`;
     selectElement.appendChild(optionElement);
 });
 }
@@ -209,7 +209,7 @@ function populateTaskOffCanv() {
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
 empAssignBtn.addEventListener('click', populateEmpOffCanv);
-
+empAssignBtn.addEventListener('click', populateTaskOffCanv);
 
 
 
