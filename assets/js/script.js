@@ -8,7 +8,8 @@ const daylinks = document.querySelectorAll('.dayLink');
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 const taskDayInp = document.querySelector('#TaskDayInp');
-const taskStartInp = document.querySelector('#TaskStartInp');
+const taskStartHr = document.querySelector('#TaskStartHr');
+const taskStartMin = document.querySelector('#TaskStartMin');
 const taskDurationInp = document.querySelector('#TaskDurationInp');
 const taskIndicatorEl = document.querySelector('#taskIndicator');
 //employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,14 +98,17 @@ function taskStoreLocalStorage(newTaskData) {
 function addTask(event) {
   event.preventDefault();
 
-  if (!taskNameInp.value || !taskDayInp.value || !taskStartInp.value || !taskDurationInp.value) {
+  if (!taskNameInp.value || !taskDayInp.value || !taskStartHr.value || !taskStartMin.value || !taskDurationInp.value) {
     taskIndicatorEl.textContent = "Cannot be Blank.";
     return;
   } else if (!weekdays.includes(taskDayInp.value)) {
     taskIndicatorEl.textContent = "Must enter a day of the week.";
     return;
-  } else if (isNaN(Number(taskStartInp.value)) || isNaN(Number(taskDurationInp.value))) {
+  } else if (isNaN(Number(taskStartHr.value)) || isNaN(Number(taskStartMin.value)) || isNaN(Number(taskDurationInp.value))) {
     taskIndicatorEl.textContent = "Please enter only positive numbers for start and duration."
+    return;
+  } else if (Number(taskStartHr.value) >= 24 || Number(taskStartHr.value) < 0 || Number(taskStartMin.value) >= 60 || Number(taskStartMin.value) < 1) {
+    taskIndicatorEl.textContent = "Please enter a valid time format."
     return;
   }
 
@@ -112,7 +116,8 @@ function addTask(event) {
     task: taskNameInp.value,
     assigned: [],
     day: taskDayInp.value,
-    starttime: Number(taskStartInp.value),
+    startHr: Number(taskStartHr.value),
+    startMin: Number(taskStartMin.value),
     duration: Number(taskDurationInp.value),
   };
   
