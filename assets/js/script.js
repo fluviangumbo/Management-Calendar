@@ -18,6 +18,7 @@ const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
 const empAssignBtn = document.querySelector('#empAssignment')
+const assignBtn = document.querySelector('#assignmentBtn')
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -205,6 +206,9 @@ function populateTaskOffCanv() {
     selectElement.appendChild(optionElement);
 });
 }
+
+//create a function to save the assigned emp to task for day, while not allowing duplicates.
+
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
