@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.th {}
+
+body {
+    font-family: sans-serif;
+    background-color: #f9fbfd;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px 0;
+    gap: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 20px 0;
+    color: hsl(206, 17%, 28%);
+}
+
+h2 {
+    text-align: center;
+}
+
+.card {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    color: hsl(206, 17%, 28%);
+    font-size: 18px;
+    max-width: 900px;
+    min-height: 800px;
+    padding: 30px 40px;
+    flex: 1;
+}
+
+.card-title{
+  font-size: larger;
+}
+
+.card-header {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e7e9eb;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.task-list-item{
+  margin: 1%;
+  font-weight: 600;
+  font-size: larger;
+}
+.card-body2{
+  margin:2%;
+  
+}
