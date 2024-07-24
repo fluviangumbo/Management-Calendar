@@ -1,10 +1,10 @@
-// global variables
+// globa  constiables
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
-//darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
 //
-//task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//task inpu consts^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 const taskDayInp = document.querySelector('#TaskDayInp');
@@ -12,7 +12,7 @@ const taskStartHr = document.querySelector('#TaskStartHr');
 const taskStartMin = document.querySelector('#TaskStartMin');
 const taskDurationInp = document.querySelector('#TaskDurationInp');
 const taskIndicatorEl = document.querySelector('#taskIndicator');
-//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//employee inpu consts ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
@@ -189,7 +189,7 @@ function populateEmpOffCanv() {
   selectElement.innerHTML = '';
   
   existingEmpData.forEach(function (employee) {
-    var optionElement = document.createElement('option');
+  const optionElement = document.createElement('option');
     optionElement.text = `${employee.firstName} ${employee.lastName}`;
     selectElement.appendChild(optionElement);
 });
@@ -201,7 +201,7 @@ function populateTaskOffCanv() {
   selectElement.innerHTML = '';
   
   existingTaskData.forEach(function (taskData) {
-    var optionElement = document.createElement('option');
+  const optionElement = document.createElement('option');
     optionElement.text = `${taskData.task}`;
     selectElement.appendChild(optionElement);
 });
