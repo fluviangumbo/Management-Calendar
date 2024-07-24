@@ -17,11 +17,12 @@
 
         <a href="#modalInputTask" data-bs-toggle="modal" data-id="modalTaskInp" data-bs-target="#modalInputTask">Add
             Task</a>
-        <a href="#modalInputEmployee" data-bs-toggle="modal" data-id="modalEmpInp" data-bs-target="#modalInputEmployee">Add
+        <a href="#modalInputEmployee" data-bs-toggle="modal" data-id="modalEmpInp"
+            data-bs-target="#modalInputEmployee">Add
             Employee</a>
         <!--ABOVE is <a> for modalTaskInput ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-            aria-controls="offcanvasBottom">Toggle Bottom Offcanvas</button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
     </header>
     <section class="weekschedule">
@@ -35,8 +36,8 @@
                     </a>
                     <button type="monbutton" class="btn btn-secondary dayLink" data-id="Monday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
                 <!--col-sm-6 states window size equal to or greater than 576px will
@@ -49,8 +50,8 @@
                     </a>
                     <button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
@@ -59,8 +60,8 @@
                     </a>
                     <button type="wedbutton" class="btn btn-secondary dayLink" data-id="Wednesday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
@@ -69,8 +70,8 @@
                     </a>
                     <button type="thurbutton" class="btn btn-secondary dayLink" data-id="Thursday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
@@ -79,8 +80,8 @@
                     </a>
                     <button type="fributton" class="btn btn-secondary dayLink" data-id="Friday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
@@ -89,8 +90,8 @@
                     </a>
                     <button type="satbutton" class="btn btn-secondary dayLink" data-id="Saturday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
                 <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl">
@@ -99,8 +100,8 @@
                     </a>
                     <button type="sunbutton" class="btn btn-secondary dayLink" data-id="Monday"></button>
                     <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
+                        <li class="list-group-item">Employees assigned: 99</option>
+                        <li class="list-group-item">Tasks Assigned: 99</option>
                     </ul>
                 </div>
             </div>
@@ -189,16 +190,35 @@
     </div>
 
 
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body small">
-            ...
+        <div class="offcanvas-body">
+            <h2> Assign Tasks </h2>
+            <div class="dropdown">
+                
+                <select class="form-select">
+                  <option id="dropMon" class="dropdown-item">Monday</option>
+                  <option id="dropTue" class="dropdown-item">Tuesday</option>
+                  <option id="dropWed" class="dropdown-item">Wednesday</option>
+                  <option id="dropThu" class="dropdown-item">Thursday</option>
+                  <option id="dropFri" class="dropdown-item">Friday</option>
+                  <option id="dropSat" class="dropdown-item">Saturday</option>
+                  <option id="dropSun" class="dropdown-item">Sunday</option>
+                </select>
+                <select class="form-select">
+                    <option id="dropMon" class="dropdown-item">Joe Cornhole</option>
+                  </select>
+                  <select class="form-select">
+                    <option id="dropMon" class="dropdown-item">Cleaning</option>
+                  </select>
+               <button type="submit" id="assignmentBtn">Assign to Task</button>
+              </div>
+            </div>
         </div>
     </div>
-
 
 
 
@@ -208,7 +228,7 @@
 
     </section>
     <script src="./assets/js/script.js"></script>
-    <!-- <script src="./assets/js/day.js"></script> -->
+    <script src="./assets/js/day.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
