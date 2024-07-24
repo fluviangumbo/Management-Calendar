@@ -1,7 +1,7 @@
 const day = new URLSearchParams(location.search).get("day");
 const backBtn = document.querySelector('#back');
 
-let redirectURL = '';
+let redirectURL = 'index.html';
 
 const redirectPage = function (url) {
     redirectURL = url;
