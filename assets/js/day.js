@@ -12,7 +12,8 @@ function fetchTaskEmps(){
 }
 // select task for that day 
     for(let i=0; i<allEmps.lengths;i++){
-  
+  if(task.assigned.includes(i)){
+    allEmps[i]
+    empBuilder(div,allEmps[i],empEl)
+  }
     }
-
-
