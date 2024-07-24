@@ -183,9 +183,10 @@ function addEmp(event) {
 }
 // create a function that populates the form select element in the offcanvas using the 
 function populateEmpOffCanv() {
-  let selectElement = document.getElementById('#nameSelect');
+  let selectElement = document.getElementById('nameSelect');
   let existingEmpData = pullEmpData();
   selectElement.innerHTML = '';
+  
   existingEmpData.forEach(function (employee) {
     var optionElement = document.createElement('option');
     optionElement.text = `${employee.firstName} ${employee.lastName}`;
@@ -193,7 +194,17 @@ function populateEmpOffCanv() {
 });
 }
 
-
+function populateTaskOffCanv() {
+  let selectElement = document.getElementById('taskSelect');
+  let existingEmpData = pullTaskData();
+  selectElement.innerHTML = '';
+  
+  existingEmpData.forEach(function (employee) {
+    var optionElement = document.createElement('option');
+    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    selectElement.appendChild(optionElement);
+});
+}
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);

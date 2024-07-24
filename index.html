@@ -21,7 +21,7 @@
             data-bs-target="#modalInputEmployee">Add
             Employee</a>
         <!--ABOVE is <a> for modalTaskInput ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        <button id="empAssignment" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
     </header>
@@ -197,30 +197,30 @@
         </div>
         <div class="offcanvas-body">
             <h2> Assign Tasks </h2>
-            
+
             <div>
                 <select id="daySelect" class="form-select">
-                  <option id="dropMon" class="dropdown-item">Monday</option>
-                  <option id="dropTue" class="dropdown-item">Tuesday</option>
-                  <option id="dropWed" class="dropdown-item">Wednesday</option>
-                  <option id="dropThu" class="dropdown-item">Thursday</option>
-                  <option id="dropFri" class="dropdown-item">Friday</option>
-                  <option id="dropSat" class="dropdown-item">Saturday</option>
-                  <option id="dropSun" class="dropdown-item">Sunday</option>
+                    <option id="dropMon" class="dropdown-item">Monday</option>
+                    <option id="dropTue" class="dropdown-item">Tuesday</option>
+                    <option id="dropWed" class="dropdown-item">Wednesday</option>
+                    <option id="dropThu" class="dropdown-item">Thursday</option>
+                    <option id="dropFri" class="dropdown-item">Friday</option>
+                    <option id="dropSat" class="dropdown-item">Saturday</option>
+                    <option id="dropSun" class="dropdown-item">Sunday</option>
                 </select>
                 <select id="nameSelect" class="form-select">
-                    <option id="dropMon" class="dropdown-item">Joe Cornhole</option>
-                  </select>
-                  <select id="taskSelect" class="form-select">
-                    <option id="placeholder" class="dropdown-item">Cleaning</option>
-                  </select>
-                  <button type="submit" id="assignmentBtn">Assign to Task</button>
-                </div>
-                  
-               
-              </div>
+                    
+                </select>
+                <select id="taskSelect" class="form-select">
+                    
+                </select>
+                <button type="submit" id="assignmentBtn">Assign to Task</button>
             </div>
+
+
         </div>
+    </div>
+    </div>
     </div>
 
 
@@ -231,7 +231,7 @@
 
     </section>
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/day.js"></script>
+    <!-- <script src="./assets/js/day.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
