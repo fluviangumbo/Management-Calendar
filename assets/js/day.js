@@ -51,11 +51,12 @@ function empBuilder (type, empIndexed, parentEl) {
 }
     
 
-const redirectPage = function () {
-    const redirectURL = 'index.html';
+let redirectURL = '';
+const redirectPage = function (url) {
+    redirectURL = url;
     location.assign(url);
-  };
+};
 
 
-backBtn.addEventListener('click', function() {redirectPage('index.html')}); 
+backBtn.addEventListener('click', function() {redirectPage('index.html')});
 
