@@ -1,10 +1,10 @@
-// global variables
+// globa  constiables
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
-//darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
 //
-//task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//task inpu consts^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 const taskDayInp = document.querySelector('#TaskDayInp');
@@ -12,11 +12,13 @@ const taskStartHr = document.querySelector('#TaskStartHr');
 const taskStartMin = document.querySelector('#TaskStartMin');
 const taskDurationInp = document.querySelector('#TaskDurationInp');
 const taskIndicatorEl = document.querySelector('#taskIndicator');
-//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//employee inpu consts ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
+const empAssignBtn = document.querySelector('#empAssignment')
+const assignBtn = document.querySelector('#assignmentBtn')
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -180,9 +182,40 @@ function addEmp(event) {
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
+// create a function that populates the form select element in the offcanvas using the 
+function populateEmpOffCanv() {
+  let selectElement = document.getElementById('nameSelect');
+  let existingEmpData = pullEmpData();
+  selectElement.innerHTML = '';
+  
+  existingEmpData.forEach(function (employee) {
+  const optionElement = document.createElement('option');
+    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    selectElement.appendChild(optionElement);
+});
+}
+
+function populateTaskOffCanv() {
+  let selectElement = document.getElementById('taskSelect');
+  let existingTaskData = pullTaskData();
+  selectElement.innerHTML = '';
+  
+  existingTaskData.forEach(function (taskData) {
+  const optionElement = document.createElement('option');
+    optionElement.text = `${taskData.task}`;
+    selectElement.appendChild(optionElement);
+});
+}
+
+//create a function to save the assigned emp to task for day, while not allowing duplicates.
+
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
+empAssignBtn.addEventListener('click', populateEmpOffCanv);
+empAssignBtn.addEventListener('click', populateTaskOffCanv);
+
+
 
 //are the below calls necessary with them being called in the above functions?
 //renderTasks();
