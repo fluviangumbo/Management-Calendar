@@ -9,45 +9,76 @@ const currentDayTasks = allTasks.filter( function (task) {
   return task.day === day 
 });
 
-currentDayTasks.forEach(function (task) {
-  taskBuilder('div', task, taskEl);
-});
+
+function buildDay () {
+  if (currentDayTasks.length > 0) {
+    currentDayTasks.forEach(function (task) {
+      taskBuilder('div', task, taskEl);
+    });
+  } else {
+    blankTasks();
+  }
+}
+
+
+function blankTasks () {
+  const blank = document.createElement('div');
+  blank.textContent = "No tasks yet!";
+  taskEl.appendChild(blank);
+}
 
 
 function taskBuilder (type, task, parentEl) {
   const elem = document.createElement(type);
-  const taskName = task.task.value;
-  const taskStart = `${task.startHr.value}:${task.startMin.value}`;
-  const taskDuration = task.durattion.value;
+  elem.classList.add('card-body2');
 
-  const title = document.createElement('h2');
+  const taskName = task.task; //don't use .value here, think that's for inputs
+  const taskStart = `${task.startHr}:${task.startMin}`;
+  const taskDuration = task.duration;
+
+  const title = document.createElement('h5');
   title.textContent = taskName;
+  title.classList.add('card-title');
 
   const info = document.createElement('p');
   info.textContent = `Start Time: ${taskStart}  Duration: ${taskDuration}`;
+  info.classList.add('card-text');
+  
+  const empList = document.createElement('ul');
+  if (task.assigned.length > 0) {
+    fetchTaskEmps(empList, task);
+  } else {
+    const noEmp = document.createElement('li');
+    noEmp.textContent = "No employees assigned to task."
+    empList.appendChild(noEmp);
+  }
 
   elem.appendChild(title);
   elem.appendChild(info);
+  elem.appendChild(empList);
 
-  fetchTaskEmps(elem, task);
+
   
+  // styling? add class?
+
   parentEl.appendChild(elem);
 }
 
-function fetchTaskEmps(empEl, dayTask) { // right now we need a way to validate the day 
-    // select task for that day 
-    for(let i = 0; i < allEmps.lengths; i++) {
+
+function fetchTaskEmps(assignedEl, dayTask) {
+    for(let i = 0; i < allEmps.length; i++) {
       if (dayTask.assigned.includes(i)) {
         allEmps[i];
-        empBuilder('div', allEmps[i], empEl);
+        empBuilder('li', allEmps[i], assignedEl);
       }
     }
 }
 
+
 function empBuilder (type, empIndexed, parentEl) {
-  const elem = document.createElement(type);
-  elem.textContent = `${empIndexed.firstName} ${empIndexed.lastName} assigned.`;
-  parentEl.appendChild(elem);
+  const emp = document.createElement(type);
+  emp.textContent = `${empIndexed.firstName} ${empIndexed.lastName} assigned.`;
+  parentEl.appendChild(emp);
 }
     
 
@@ -60,3 +91,5 @@ const redirectPage = function (url) {
 
 backBtn.addEventListener('click', function() {redirectPage('index.html')});
 
+
+buildDay();
