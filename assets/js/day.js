@@ -38,7 +38,7 @@ function dayEmployees (assignedArray) {
   if (assignedArray.length > 0) {
     assignedArray.forEach(function (working) {
       const worker = document.createElement('li');
-      worker.textContent = `${allEmps[working].firstName} ${allEmps[working].lastName}`;
+      worker.textContent = allEmps[working].fullName;
       rosterEl.appendChild(worker);
     });
   } else {
