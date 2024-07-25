@@ -144,23 +144,14 @@ function populateTaskOffCanv() {
   
   existingTaskData.forEach(function (taskData) {
   const optionElement = document.createElement('option');
-    optionElement.text = `${taskData.task}`;
+    optionElement.text = `${taskData.task} ${taskData.day}`;
     selectElement.appendChild(optionElement);
 });
 }
 
 
 //create a function called taskAssign that pushes the employee index value to the assigned value in taskData while getting the values from offcanvas
-function taskAssign() {
-  const nameSelect = document.getElementById("nameSelect");
-  const taskSelect = document.getElementById("taskSelect");
-  let existingTaskData = pullTaskData();
-  let selectedEmpIndex = nameSelect.index;
-  let selectedTaskIndex = taskSelect.assigned;
-  
-  
-  console.log(taskData);
-};
+
 
 
 
