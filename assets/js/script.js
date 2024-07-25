@@ -83,14 +83,11 @@ function renderStats() {
   //Display to page
 }
 
-function pullTaskData () { //adding for use on day.html and modals, see pullEmpData()
-  let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
-  return taskList;
-}
 
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
+  newTaskData.id = existingTaskData.length
   taskData.push(newTaskData);
   let updatedTaskData = JSON.stringify(taskData);
   localStorage.setItem('taskData', updatedTaskData)
@@ -136,10 +133,7 @@ function addTask(event) {
   //renderStats();
 }
 
-function pullEmpData () { //adding separate function for multiple calls throughout logic
-  let stored = JSON.parse(localStorage.getItem('empsData')) || [];
-  return stored;
-}
+
 // to pull an employee's specific info: selectedEmpData = pullEmpData()[EMP_INDEX].KEY; pullTaskDat()[no-task-index].KEY;
 
 function empStoreLocalStorage(newEmpData) {
@@ -164,9 +158,10 @@ function addEmp(event) {
   let newEmpIndex = pullEmpData().length;
 
   const empData = {
-    firstName: firstNameInp.value,
-    lastName: lastNameInp.value,
+    firstName: firstNameInp.value.trim(),
+    lastName: lastNameInp.value.trim(),
     index: newEmpIndex,
+    fullName: `${firstNameInp.value.trim()} ${lastNameInp.value.trim()}`
   };
 
   empStoreLocalStorage(empData);
@@ -187,8 +182,8 @@ function addEmp(event) {
 //create a function to save the assigned emp to task for day, while not allowing duplicates.
 
 
-// taskFormEl.addEventListener('submit', addTask); COMMENTED OUT FOR DEBUG
-// empFormEl.addEventListener('submit', addEmp);
+taskFormEl.addEventListener('submit', addTask);
+empFormEl.addEventListener('submit', addEmp);
 
 
 
