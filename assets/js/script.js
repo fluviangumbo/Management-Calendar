@@ -18,7 +18,7 @@ const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
 const empAssignBtn = document.querySelector('#empAssignment')
-const assignBtn = document.querySelector('#assignmentBtn')
+
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -182,38 +182,14 @@ function addEmp(event) {
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
-// create a function that populates the form select element in the offcanvas using the 
-function populateEmpOffCanv() {
-  let selectElement = document.getElementById('nameSelect');
-  let existingEmpData = pullEmpData();
-  selectElement.innerHTML = '';
-  
-  existingEmpData.forEach(function (employee) {
-  const optionElement = document.createElement('option');
-    optionElement.text = `${employee.firstName} ${employee.lastName}`;
-    selectElement.appendChild(optionElement);
-});
-}
-
-function populateTaskOffCanv() {
-  let selectElement = document.getElementById('taskSelect');
-  let existingTaskData = pullTaskData();
-  selectElement.innerHTML = '';
-  
-  existingTaskData.forEach(function (taskData) {
-  const optionElement = document.createElement('option');
-    optionElement.text = `${taskData.task}`;
-    selectElement.appendChild(optionElement);
-});
-}
+//MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
 //create a function to save the assigned emp to task for day, while not allowing duplicates.
 
 
-taskFormEl.addEventListener('submit', addTask);
-empFormEl.addEventListener('submit', addEmp);
-empAssignBtn.addEventListener('click', populateEmpOffCanv);
-empAssignBtn.addEventListener('click', populateTaskOffCanv);
+// taskFormEl.addEventListener('submit', addTask); COMMENTED OUT FOR DEBUG
+// empFormEl.addEventListener('submit', addEmp);
+
 
 
 

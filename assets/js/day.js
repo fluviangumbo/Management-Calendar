@@ -5,6 +5,8 @@ const allTasks = pullTaskData();
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
 const rosterEl = document.querySelector('#empDisplay');
+const assignBtn = document.querySelector('#assignmentBtn')
+const empAssignBtn = document.querySelector('#empAssignment') // for the offcavnasbtn
 
 const currentDayTasks = allTasks.filter( function (task) {
   return task.day === day 
@@ -122,9 +124,35 @@ const redirectPage = function (url) {
     location.assign(url);
 };
 
+// create a function that populates the form select element in the offcanvas using the 
+function populateEmpOffCanv() {
+  let selectElement = document.getElementById('nameSelect');
+  let existingEmpData = pullEmpData();
+  selectElement.innerHTML = '';
+  
+  existingEmpData.forEach(function (employee) {
+  const optionElement = document.createElement('option');
+    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    selectElement.appendChild(optionElement);
+});
+}
+
+function populateTaskOffCanv() {
+  let selectElement = document.getElementById('taskSelect');
+  let existingTaskData = pullTaskData();
+  selectElement.innerHTML = '';
+  
+  existingTaskData.forEach(function (taskData) {
+  const optionElement = document.createElement('option');
+    optionElement.text = `${taskData.task}`;
+    selectElement.appendChild(optionElement);
+});
+}
+
 
 backBtn.addEventListener('click', function() {redirectPage('index.html')});
 
-
+empAssignBtn.addEventListener('click', populateEmpOffCanv);
+empAssignBtn.addEventListener('click', populateTaskOffCanv);
 dayEmployees(currentDayEmpByIndex);
 buildDay();
