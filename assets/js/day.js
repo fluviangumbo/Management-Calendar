@@ -148,23 +148,19 @@ function populateTaskOffCanv() {
     selectElement.appendChild(optionElement);
 });
 }
-//create a function called taskAssign that pushes the employee index value to the assigned value in taskData while taking arguments from offcanvas
+
+
+//create a function called taskAssign that pushes the employee index value to the assigned value in taskData while getting the values from offcanvas
 function taskAssign() {
   const nameSelect = document.getElementById("nameSelect");
   const taskSelect = document.getElementById("taskSelect");
+  let taskData = pullTaskData();
 
-  const taskData = {
-    task: taskNameInp.value,
-    assigned: [],
-    day: taskDayInp.value,
-    startHr: Number(taskStartHr.value),
-    startMin: Number(taskStartMin.value),
-    duration: Number(taskDurationInp.value),
-  }
   let selectedEmpIndex = nameSelect.value;
   let selectedTaskIndex = taskSelect.assigned;
 
-  selectedTaskIndex.push(taskData)
+  selectedTaskIndex.push(selectedEmpIndex);
+  console.log(taskData)
   taskStoreLocalStorage(taskData);
 };
 
