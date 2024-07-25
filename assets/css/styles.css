@@ -14,6 +14,12 @@ header{
     background-color: rgb(185, 215, 240);
 }
 
+.workstats{
+    display: block;
+    border-radius: 2rem;
+    height: 30px;
+}
+
 .btn{
     margin: .5%;
     outline: auto;
@@ -61,8 +67,17 @@ header{
     /* fill */
 }
 
-.workstats {
+#workstats-container-2 {
     /* fill */
+width: 400px;
+height: 200px;
+margin: 50px;
+align-self: center;
+background-color: black;
+border-collapse: collapse;
+outline: 200px;
+color: black;
+
 }
 
 @media screen and (px) {
