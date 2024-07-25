@@ -154,7 +154,7 @@ function populateTaskOffCanv() {
 function taskAssign() {
   const nameSelect = document.getElementById("nameSelect");
   const taskSelect = document.getElementById("taskSelect");
-  let existingTaskData = pullTaskData();
+  //allTask
   let selectedEmpIndex = nameSelect.index;
   let selectedTaskIndex = taskSelect.assigned;
   
