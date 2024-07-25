@@ -154,14 +154,17 @@ function populateTaskOffCanv() {
 function taskAssign() {
   const nameSelect = document.getElementById("nameSelect");
   const taskSelect = document.getElementById("taskSelect");
-  let taskData = pullTaskData();
-
+  let existingTaskData = pullTaskData();
   let selectedEmpIndex = nameSelect.value;
   let selectedTaskIndex = taskSelect.assigned;
-
-  selectedTaskIndex.push(selectedEmpIndex);
-  console.log(taskData)
-  taskStoreLocalStorage(taskData);
+  
+  let taskData = existingTaskData;
+  
+  taskData.push(taskData.assigned);
+  let updatedTaskData = JSON.stringify(taskData.assigned);
+  localStorage.setItem('taskData', selectedEmpIndex)
+  
+  console.log(taskData);
 };
 
 
