@@ -148,10 +148,30 @@ function populateTaskOffCanv() {
     selectElement.appendChild(optionElement);
 });
 }
+//create a function called taskAssign that pushes the employee index value to the assigned value in taskData while taking arguments from offcanvas
+function taskAssign() {
+  const nameSelect = document.getElementById("nameSelect");
+  const taskSelect = document.getElementById("taskSelect");
+
+  const taskData = {
+    task: taskNameInp.value,
+    assigned: [],
+    day: taskDayInp.value,
+    startHr: Number(taskStartHr.value),
+    startMin: Number(taskStartMin.value),
+    duration: Number(taskDurationInp.value),
+  }
+  let selectedEmpIndex = nameSelect.value;
+  let selectedTaskIndex = taskSelect.assigned;
+
+  selectedTaskIndex.push(taskData)
+  taskStoreLocalStorage(taskData);
+};
+
 
 
 backBtn.addEventListener('click', function() {redirectPage('index.html')});
-
+assignBtn.addEventListener('click', function() {taskAssign, console.log('asdg')});
 empAssignBtn.addEventListener('click', populateEmpOffCanv);
 empAssignBtn.addEventListener('click', populateTaskOffCanv);
 dayEmployees(currentDayEmpByIndex);

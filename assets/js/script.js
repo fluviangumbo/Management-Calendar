@@ -3,7 +3,7 @@ const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
 //darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
-//
+
 //task inpu consts^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
@@ -17,7 +17,7 @@ const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
-const empAssignBtn = document.querySelector('#empAssignment')
+
 
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
