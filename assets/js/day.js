@@ -132,7 +132,7 @@ function populateEmpOffCanv() {
   
   existingEmpData.forEach(function (employee) {
   const optionElement = document.createElement('option');
-    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    optionElement.text = `${employee.firstName} ${employee.lastName} ${employee.index}`;
     selectElement.appendChild(optionElement);
 });
 }
@@ -155,14 +155,9 @@ function taskAssign() {
   const nameSelect = document.getElementById("nameSelect");
   const taskSelect = document.getElementById("taskSelect");
   let existingTaskData = pullTaskData();
-  let selectedEmpIndex = nameSelect.value;
+  let selectedEmpIndex = nameSelect.index;
   let selectedTaskIndex = taskSelect.assigned;
   
-  let taskData = existingTaskData;
-  
-  taskData.push(taskData.assigned);
-  let updatedTaskData = JSON.stringify(taskData.assigned);
-  localStorage.setItem('taskData', selectedEmpIndex)
   
   console.log(taskData);
 };
