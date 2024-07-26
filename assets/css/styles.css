@@ -82,6 +82,10 @@ border-collapse: collapse;
 outline: 200px;
 }
 
+#weekly-stats-sheet{
+    outline: auto;
+}
+
 @media screen and (px) {
 
 }
