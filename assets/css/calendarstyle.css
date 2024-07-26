@@ -16,7 +16,7 @@ body,
 
 body {
     font-family: sans-serif;
-    background-color: #97bde6 !important;
+    background-color: #f9fbfd;
 }
 
 .wrapper {
@@ -37,7 +37,7 @@ h2 {
 }
 
 .card {
-    background-color: hsl(0, 0%, 100%);
+    background-color: rgb(185, 215, 240) !important;
     border-radius: 5px;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
