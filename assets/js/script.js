@@ -1,4 +1,4 @@
-// global  consts
+// global consts
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
 //darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,8 +184,8 @@ function dayInfo(index) {
   const taskCountArr = calcDayTasks();
   const day = document.querySelector(`#${weekdays[index]}`);
 
-  while (day.children.length > 0) {
-    day.removeChild(day.children[0]);
+  while (day.children.length > 1) {
+    day.removeChild(day.children[1]);
   }
   
   const dayList = document.createElement('ul');
