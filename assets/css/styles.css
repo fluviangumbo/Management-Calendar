@@ -99,8 +99,13 @@ align-self: center;
 
 #weekly-stats-sheet{
     outline: auto;
+    outline-style: inset;
 }
 
+#weekday{
+    padding-top: 2px;
+    padding-bottom: 1%;
+}
 @media screen and (px) {
 
 }
