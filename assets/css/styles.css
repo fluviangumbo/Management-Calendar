@@ -67,6 +67,10 @@ header{
     /* fill */
 }
 
+.days-column {
+    width: 20%;
+}
+
 #workstats-container-2 {
     /* fill */
 width: 400px;
@@ -76,8 +80,6 @@ align-self: center;
 background-color: black;
 border-collapse: collapse;
 outline: 200px;
-color: black;
-
 }
 
 @media screen and (px) {
