@@ -1,5 +1,5 @@
 :root {
-  
+
 }
 
 h2{
@@ -7,11 +7,27 @@ h2{
 }
 a{
     font-size: larger;
-    
+}
+
+
+body{
+    overflow-x: hidden; 
+    min-height: 900px;
+    background-color: rgb(185, 215, 240) !important; 
 }
 
 header{
     background-color: rgb(185, 215, 240);
+}
+
+.workstats{
+    display: block;
+    border-radius: 2rem;
+    height: 30px;
+}
+
+.weekday{
+    min-height: 1000px;
 }
 
 .btn{
@@ -21,7 +37,6 @@ header{
     outline-style: solid;
     outline-width: .07cm;
 }
-
 
 .row{
     font-size: larger;
@@ -39,13 +54,13 @@ header{
     font-size: 20px;
     font-weight: bold;
     min-height: 200px;
-    outline:auto;
+    outline: auto;
     outline-style: solid;
 }
 
 .list-group-item{
     min-height: 100px;
-    font-weight:300;
+    font-weight: 300;
     font-weight: bold;
 }
 
@@ -61,10 +76,37 @@ header{
     /* fill */
 }
 
-.workstats {
-    /* fill */
+.days-column {
+    width: 40%;
 }
 
+.Employee-Names-Stats{
+    width: 40%;
+}
+
+.task-columns {
+    width: 15%;
+}
+
+#workstats-container-2 {
+    /* fill */
+width: 94%;
+height: 200px;
+margin: 50px;
+align-self: center;
+
+}
+
+#weekly-stats-sheet{
+    outline: auto;
+    outline-style: inset;
+}
+
+#weekday{
+    padding-top: 10px;
+    padding-bottom: 1%;
+    margin: 0px;
+}
 @media screen and (px) {
 
 }

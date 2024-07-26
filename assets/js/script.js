@@ -182,6 +182,23 @@ function addEmp(event) {
 }
 //MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
+
+function calcDayHours () {
+  let totalHours = 0;
+  pullTaskData()
+  pullEmpData()
+
+  for (let i = 0; i < 7; i++) {
+    for (let j = 0; j < allTasks.length; j++) {
+      if (weekday[i] === allTasks[j].day) {
+        totalHours += (allTasks[j].assigned.length)*(allTasks[j].duration);
+      }
+    }
+  }
+  
+  return totalHours;
+}
+
 //create a function to save the assigned emp to task for day, while not allowing duplicates.
 function initCompanyName() {
   let compName = localStorage.getItem('companyName') || '';

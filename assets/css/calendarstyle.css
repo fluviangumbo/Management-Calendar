@@ -12,11 +12,16 @@ body,
     padding: 0;
 }
 
-.th {}
+#back {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    margin: 10px;
+}
 
 body {
     font-family: sans-serif;
-    background-color: #f9fbfd;
+    background-color: #9acafa !important;
 }
 
 .wrapper {
@@ -37,7 +42,7 @@ h2 {
 }
 
 .card {
-    background-color: hsl(0, 0%, 100%);
+    background-color: white !important;
     border-radius: 5px;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -72,5 +77,10 @@ table {
 
 .card-body2{
   margin:2%;
-  
+}
+
+#empAssignment{
+    outline: auto;
+    outline-color: rgb(66, 66, 66);
+    outline-style:solid
 }
