@@ -22,6 +22,8 @@ const compFormEl = document.querySelector('#compNameInpForm');
 const compNameInp = document.querySelector('#compNameInp');
 const compIndicator = document.querySelector('#compIndicator');
 const compNameModal = new bootstrap.Modal(document.getElementById('modalInputCompName'));
+const stats = document.querySelector('#statsTable');
+
 
 const weekdays = [
   'Monday',
@@ -32,12 +34,16 @@ const weekdays = [
   'Saturday',
   'Sunday',
 ];
+
+
 //when "day" is clicked, opens day.html?day=*day clicked*, no asteriks.vvvvvvvvv
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
     location.assign(`day.html?day=${event.target.dataset.id}`);
   })
 });
+
+
 //darkmode stuff commented out for simplicity sake and debugging
 // i may still get to this -nimai
 // function lastKnownMode() {
@@ -72,22 +78,6 @@ daylinks.forEach((link) => {
 //toggleBtn.addEventListener('click', darkModeToggle);
 
 
-
-function renderTasks() {
-  // TODO: Write function that renders tasks to calendar
-
-  // create HTML elements
-
-  // add content to elements from local storage
-}
-
-function renderStats() {
-  // Pull member stats and task stats from local storage (might calculate in this function)
-
-  //Display to page
-}
-
-
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
@@ -110,7 +100,7 @@ function addTask(event) {
   } else if (isNaN(Number(taskStartHr.value)) || isNaN(Number(taskStartMin.value)) || isNaN(Number(taskDurationInp.value))) {
     taskIndicatorEl.textContent = "Please enter only positive numbers for start and duration.";
     return;
-  } else if (Number(taskStartHr.value) >= 24 || Number(taskStartHr.value) < 0 || Number(taskStartMin.value) >= 60 || Number(taskStartMin.value) < 1) {
+  } else if (Number(taskStartHr.value) >= 24 || Number(taskStartHr.value) < 0 || Number(taskStartMin.value) >= 60 || Number(taskStartMin.value) < 0) {
     taskIndicatorEl.textContent = "Please enter a valid time format.";
     return;
   }
@@ -120,9 +110,13 @@ function addTask(event) {
     assigned: [],
     day: taskDayInp.value,
     startHr: Number(taskStartHr.value),
-    startMin: Number(taskStartMin.value),
+    startMin: Number(taskStartMin.value), //time is showing as single digit when someone enters 0
     duration: Number(taskDurationInp.value),
   };
+
+  if (taskData.startMin < 1) {
+    taskData.startMin = '00';
+  }
   
   taskStoreLocalStorage(taskData);
   document.getElementById("taskInputForm").reset();
@@ -132,6 +126,9 @@ function addTask(event) {
   setTimeout(function () {
     taskIndicatorEl.textContent = "";
   }, 5000);
+
+  renderWeek();
+  renderStats();
 }
 
 
@@ -173,6 +170,9 @@ function addEmp(event) {
   setTimeout(function () {
     empIndicatorEl.textContent = "";
   }, 5000);
+
+  renderWeek();
+  renderStats();
 }
 
 
@@ -202,6 +202,62 @@ function dayInfo(index) {
   dayList.appendChild(hoursItem);
   day.appendChild(dayList);
 }
+
+
+function renderStats() {
+  const empStats = pullEmpData();
+  const taskStats = pullTaskData();
+  
+  empStats.forEach(function(emp) {
+    let empDisplay = {
+      name: emp.fullName,
+      tasks: 0,
+      days: [],
+    };
+    let taskCounter = 0;
+    let dayTracker = [];
+    let dayUnordered = [];
+
+    for (let i = 0; i < taskStats.length; i++) {
+      if (taskStats[i].assigned.includes(emp.fullName)) {
+        dayTracker.push(taskStats[i].day);
+        taskCounter++;
+      }
+    }
+    empDisplay.tasks = taskCounter;
+
+    dayTracker.forEach(function(day) {
+      if (!dayUnordered.includes(day)) {
+        dayUnordered.push(day);
+      }
+    });
+
+    for (let i = 0; i < 7; i++) {
+      if (dayUnordered.includes(weekdays[i])) {
+        empDisplay.days.push(weekdays[i]);
+      }
+    }
+
+    const empStat = document.createElement('tr');
+
+    const empRow = document.createElement('th');
+    empRow.textContent = empDisplay.name;
+    empRow.setAttribute('scope', 'row');
+
+    const rowTasks = document.createElement('td');
+    rowTasks.textContent = empDisplay.tasks;
+
+    const rowDays = document.createElement('td');
+    rowDays.textContent = empDisplay.days; // should be in order
+
+    empStat.appendChild(empRow);
+    empStat.appendChild(rowTasks);
+    empStat.appendChild(rowDays);
+
+    stats.appendChild(empStat);
+  });
+}
+
 
 //MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
@@ -236,3 +292,4 @@ compFormEl.addEventListener('submit', setCompanyName);
 //lastKnownMode();
 initCompanyName();
 renderWeek();
+renderStats();

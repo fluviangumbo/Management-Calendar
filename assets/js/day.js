@@ -14,7 +14,9 @@ const currentDayTasks = allTasks.filter(function (task) {
 
 // TENTATIVE FUNCTIONALITY FOR ROSTER DISPLAY, NEED TO BE ABLE TO ASSIGN TASKS TO TEST
 function populateRoster() {
-  
+  const allTasks = pullTaskData();
+  const allEmps = pullEmpData();
+
   const list = document.createElement('ul');
   const assignedEmployees = [];
   for (const task of currentDayTasks ){
@@ -44,6 +46,8 @@ function populateRoster() {
 
 
 function buildDay() {
+  const allTasks = pullTaskData();
+  const allEmps = pullEmpData();
   if (currentDayTasks.length > 0) {
     currentDayTasks.forEach(function (task) {
       taskBuilder('div', task, taskEl);
@@ -103,7 +107,7 @@ function fetchTaskEmps(assignedEl, dayTask) {
 
 function empBuilder(type, empIndexed, parentEl) {
   const emp = document.createElement(type);
-  emp.textContent = `${empIndexed.firstName} ${empIndexed.lastName} assigned.`;
+  emp.textContent = `${empIndexed.fullName} assigned.`;
   parentEl.appendChild(emp);
 }
 
