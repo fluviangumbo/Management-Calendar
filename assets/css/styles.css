@@ -76,20 +76,25 @@ header{
     /* fill */
 }
 
+.days-column {
+    width: 40%;
+}
+
+.Employee-Names-Stats{
+    width: 40%;
+}
+
+.task-columns {
+    width: 15%;
+}
+
 #workstats-container-2 {
     /* fill */
-    width: 400px;
-    height: 200px;
-    margin: 50px;
-    align-self: center;
-}
+width: 94%;
+height: 200px;
+margin: 50px;
+align-self: center;
 
-.workstats-container{
-    padding: 20px;
-}
-
-.weekschedule{
-    margin: auto;
 }
 
 #weekly-stats-sheet{
