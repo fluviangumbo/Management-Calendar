@@ -1,10 +1,10 @@
-// globa  constiables
+// global  consts
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
 //darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
-
-//task inpu consts^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//for the page change^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//task inpu constsvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 const taskDayInp = document.querySelector('#TaskDayInp');
@@ -12,17 +12,17 @@ const taskStartHr = document.querySelector('#TaskStartHr');
 const taskStartMin = document.querySelector('#TaskStartMin');
 const taskDurationInp = document.querySelector('#TaskDurationInp');
 const taskIndicatorEl = document.querySelector('#taskIndicator');
-//employee inpu consts ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//employee inpu consts vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
-
+//
 const compFormEl = document.querySelector('#compNameInpForm');
 const compNameInp = document.querySelector('#compNameInp');
 const compIndicator = document.querySelector('#compIndicator');
 const compNameModal = new bootstrap.Modal(document.getElementById('modalInputCompName'));
-//when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
+
 const weekdays = [
   'Monday',
   'Tuesday',
@@ -32,13 +32,14 @@ const weekdays = [
   'Saturday',
   'Sunday',
 ];
-
+//when "day" is clicked, opens day.html?day=*day clicked*, no asteriks.vvvvvvvvv
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
     location.assign(`day.html?day=${event.target.dataset.id}`);
   })
 });
 //darkmode stuff commented out for simplicity sake and debugging
+// i may still get to this -nimai
 // function lastKnownMode() {
 
 
@@ -131,9 +132,6 @@ function addTask(event) {
   setTimeout(function () {
     taskIndicatorEl.textContent = "";
   }, 5000);
-
-  //renderTasks();  i think these will go in day.js and will be called when the page is switched
-  //renderStats();
 }
 
 
@@ -175,10 +173,6 @@ function addEmp(event) {
   setTimeout(function () {
     empIndicatorEl.textContent = "";
   }, 5000);
-
-
-  //renderTasks();  i think these will go in day.js and will be called when the page is switched
-  //renderStats();
 }
 
 
@@ -211,8 +205,6 @@ function dayInfo(index) {
 
 //MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
-
-//create a function to save the assigned emp to task for day, while not allowing duplicates.
 function initCompanyName() {
   let compName = localStorage.getItem('companyName') || '';
     
@@ -237,10 +229,10 @@ empFormEl.addEventListener('submit', addEmp);
 compFormEl.addEventListener('submit', setCompanyName);
 
 
-initCompanyName();
+
 //are the below calls necessary with them being called in the above functions?
 //renderTasks();
 //renderStats();
 //lastKnownMode();
-
+initCompanyName();
 renderWeek();
