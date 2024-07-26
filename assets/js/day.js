@@ -1,23 +1,24 @@
 const day = new URLSearchParams(location.search).get("day");
 const backBtn = document.querySelector('#back');
-// pulls data 
 const allTasks = pullTaskData();
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
 const rosterEl = document.querySelector('#empDisplay');
 const assignBtn = document.querySelector('#assignmentBtn');
-const empAssignBtn = document.querySelector('#empAssignment'); // for the offcavnasbtn
+const empAssignBtn = document.querySelector('#empAssignment');
 
 const currentDayTasks = allTasks.filter(function (task) {
   return task.day === day;
 });
 
-// TENTATIVE FUNCTIONALITY FOR ROSTER DISPLAY, NEED TO BE ABLE TO ASSIGN TASKS TO TEST
+
 function populateRoster() {
-  
+  const allTasks = pullTaskData();
+  const allEmps = pullEmpData();
+
   const list = document.createElement('ul');
   const assignedEmployees = [];
-  for (const task of currentDayTasks ){
+  for (const task of currentDayTasks ) {
     for (const employee of allEmps) {
       if (task.assigned.includes(employee.fullName)) {
         assignedEmployees.push(employee);
@@ -40,10 +41,9 @@ function populateRoster() {
 }
 
 
-
-
-
 function buildDay() {
+  const allTasks = pullTaskData();
+  const allEmps = pullEmpData();
   if (currentDayTasks.length > 0) {
     currentDayTasks.forEach(function (task) {
       taskBuilder('div', task, taskEl);
@@ -65,7 +65,7 @@ function taskBuilder(type, task, parentEl) {
   const elem = document.createElement(type);
   elem.classList.add('card-body2');
 
-  const taskName = task.task; //don't use .value here, think that's for inputs
+  const taskName = task.task;
   const taskStart = `${task.startHr}:${task.startMin}`;
   const taskDuration = task.duration;
 
@@ -96,14 +96,12 @@ function taskBuilder(type, task, parentEl) {
 
 function fetchTaskEmps(assignedEl, dayTask) {
   allEmps.filter((emp) => dayTask.assigned.includes(emp.fullName)).forEach((emp) => empBuilder('li', emp, assignedEl));
-
-
 }
 
 
 function empBuilder(type, empIndexed, parentEl) {
   const emp = document.createElement(type);
-  emp.textContent = `${empIndexed.firstName} ${empIndexed.lastName} assigned.`;
+  emp.textContent = `${empIndexed.fullName} assigned.`;
   parentEl.appendChild(emp);
 }
 
@@ -114,7 +112,7 @@ const redirectPage = function (url) {
   location.assign(url);
 };
 
-// create a function that populates the form select element in the offcanvas using the 
+
 function populateEmpOffCanv() {
   let selectElement = document.getElementById('nameSelect');
   let existingEmpData = pullEmpData();
@@ -141,8 +139,6 @@ function populateTaskOffCanv() {
 }
 
 
-//create a function called taskAssign that pushes the employee index value to the assigned value in taskData while getting the values from offcanvas
-
 function taskAssign() {
   const nameSelect = document.getElementById("nameSelect");
   const taskSelect = document.getElementById("taskSelect");
@@ -159,15 +155,14 @@ function taskAssign() {
 
   localStorage.setItem('taskData', JSON.stringify(tmpTasks));
   location.reload();
-
 };
-
-
 
 
 backBtn.addEventListener('click', function () { redirectPage('index.html') });
 assignBtn.addEventListener('click', function () { taskAssign() });
 empAssignBtn.addEventListener('click', populateEmpOffCanv);
 empAssignBtn.addEventListener('click', populateTaskOffCanv);
+
+
 populateRoster();
 buildDay();

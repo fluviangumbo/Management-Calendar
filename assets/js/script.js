@@ -1,4 +1,4 @@
-// global  consts
+// global consts
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
 //darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -22,6 +22,8 @@ const compFormEl = document.querySelector('#compNameInpForm');
 const compNameInp = document.querySelector('#compNameInp');
 const compIndicator = document.querySelector('#compIndicator');
 const compNameModal = new bootstrap.Modal(document.getElementById('modalInputCompName'));
+const stats = document.querySelector('#statsTable');
+
 
 const weekdays = [
   'Monday',
@@ -32,12 +34,16 @@ const weekdays = [
   'Saturday',
   'Sunday',
 ];
+
+
 //when "day" is clicked, opens day.html?day=*day clicked*, no asteriks.vvvvvvvvv
 daylinks.forEach((link) => {
   link.addEventListener("click", function (event) {
     location.assign(`day.html?day=${event.target.dataset.id}`);
   })
 });
+
+
 //darkmode stuff commented out for simplicity sake and debugging
 // i may still get to this -nimai
 // function lastKnownMode() {
@@ -72,22 +78,6 @@ daylinks.forEach((link) => {
 //toggleBtn.addEventListener('click', darkModeToggle);
 
 
-
-function renderTasks() {
-  // TODO: Write function that renders tasks to calendar
-
-  // create HTML elements
-
-  // add content to elements from local storage
-}
-
-function renderStats() {
-  // Pull member stats and task stats from local storage (might calculate in this function)
-
-  //Display to page
-}
-
-
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
@@ -110,7 +100,7 @@ function addTask(event) {
   } else if (isNaN(Number(taskStartHr.value)) || isNaN(Number(taskStartMin.value)) || isNaN(Number(taskDurationInp.value))) {
     taskIndicatorEl.textContent = "Please enter only positive numbers for start and duration.";
     return;
-  } else if (Number(taskStartHr.value) >= 24 || Number(taskStartHr.value) < 0 || Number(taskStartMin.value) >= 60 || Number(taskStartMin.value) < 1) {
+  } else if (Number(taskStartHr.value) >= 24 || Number(taskStartHr.value) < 0 || Number(taskStartMin.value) >= 60 || Number(taskStartMin.value) < 0) {
     taskIndicatorEl.textContent = "Please enter a valid time format.";
     return;
   }
@@ -123,6 +113,14 @@ function addTask(event) {
     startMin: Number(taskStartMin.value),
     duration: Number(taskDurationInp.value),
   };
+
+  if (taskData.startHr < 10) {
+    taskData.startHr = `0${taskData.startHr}`;
+  }
+
+  if (taskData.startMin < 10) {
+    taskData.startMin = `0${taskData.startMin}`;
+  }
   
   taskStoreLocalStorage(taskData);
   document.getElementById("taskInputForm").reset();
@@ -132,10 +130,10 @@ function addTask(event) {
   setTimeout(function () {
     taskIndicatorEl.textContent = "";
   }, 5000);
+
+  renderWeek();
 }
 
-
-// to pull an employee's specific info: selectedEmpData = pullEmpData()[EMP_INDEX].KEY; pullTaskDat()[no-task-index].KEY;
 
 function empStoreLocalStorage(newEmpData) {
   let existingEmpData = pullEmpData();
@@ -173,13 +171,15 @@ function addEmp(event) {
   setTimeout(function () {
     empIndicatorEl.textContent = "";
   }, 5000);
+
+  renderStats();
 }
 
 
 function renderWeek() {
   for (let i = 0; i < 7; i++) {
     dayInfo(i);
-  };
+  }
 }
 
 
@@ -187,6 +187,11 @@ function dayInfo(index) {
   const hoursArray = calcDayHours();
   const taskCountArr = calcDayTasks();
   const day = document.querySelector(`#${weekdays[index]}`);
+
+  while (day.children.length > 1) {
+    day.removeChild(day.children[1]);
+  }
+  
   const dayList = document.createElement('ul');
   dayList.classList.add('list-group');
 
@@ -203,7 +208,65 @@ function dayInfo(index) {
   day.appendChild(dayList);
 }
 
-//MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
+
+function renderStats() {
+  const empStats = pullEmpData();
+  const taskStats = pullTaskData();
+
+  while (stats.children.length > 0) {
+    stats.removeChild(stats.children[0]);
+  }
+  
+  empStats.forEach(function(emp) {
+    let empDisplay = {
+      name: emp.fullName,
+      tasks: 0,
+      days: [],
+    };
+    let taskCounter = 0;
+    let dayTracker = [];
+    let dayUnordered = [];
+
+    for (let i = 0; i < taskStats.length; i++) {
+      if (taskStats[i].assigned.includes(emp.fullName)) {
+        dayTracker.push(taskStats[i].day);
+        taskCounter++;
+      }
+    }
+    empDisplay.tasks = taskCounter;
+
+    dayTracker.forEach(function(day) {
+      if (!dayUnordered.includes(day)) {
+        dayUnordered.push(day);
+      }
+    });
+
+    for (let i = 0; i < 7; i++) {
+      if (dayUnordered.includes(weekdays[i])) {
+        empDisplay.days.push(weekdays[i]);
+      }
+    }
+
+    const empStat = document.createElement('tr');
+
+    const empRow = document.createElement('th');
+    empRow.textContent = empDisplay.name;
+    empRow.setAttribute('scope', 'row');
+
+    const rowTasks = document.createElement('td');
+    rowTasks.textContent = empDisplay.tasks;
+
+    const rowDays = document.createElement('td');
+    rowDays.textContent = empDisplay.days;
+
+    empStat.appendChild(empRow);
+    empStat.appendChild(rowTasks);
+    empStat.appendChild(rowDays);
+
+    stats.appendChild(empStat);
+  });
+}
+
 
 function initCompanyName() {
   let compName = localStorage.getItem('companyName') || '';
@@ -217,6 +280,7 @@ function initCompanyName() {
   document.getElementById('companyName').textContent = compName;
 }
 
+
 function setCompanyName(event) {
   event.preventDefault();
   localStorage.setItem('companyName', document.getElementById('compNameInp').value.trim());
@@ -228,11 +292,6 @@ taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
 compFormEl.addEventListener('submit', setCompanyName);
 
-
-
-//are the below calls necessary with them being called in the above functions?
-//renderTasks();
-//renderStats();
-//lastKnownMode();
 initCompanyName();
 renderWeek();
+renderStats();

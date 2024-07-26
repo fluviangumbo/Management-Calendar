@@ -1,11 +1,10 @@
-
-function pullTaskData () { //adding for use on day.html and modals, see pullEmpData()
+function pullTaskData () {
     let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
     return taskList;
 }
 
 
-function pullEmpData () { //adding separate function for multiple calls throughout logic
+function pullEmpData () {
   let stored = JSON.parse(localStorage.getItem('empsData')) || [];
   return stored;
 }
@@ -26,7 +25,7 @@ function calcDayHours () {
     totalHours.push(dayHours);
   }
   
-  return totalHours; // this will be an array of total hours worked that day, with each index corresponding to weekdays[]
+  return totalHours;
 }
 
 

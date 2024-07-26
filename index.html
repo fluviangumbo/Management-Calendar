@@ -14,17 +14,18 @@
 <body>
     <header>
         <h2 id="companyName"></h2>
-
-        <a href="#modalInputTask" data-bs-toggle="modal" data-id="modalTaskInp" data-bs-target="#modalInputTask">Add
-            Task</a>
-        <a href="#modalInputEmployee" data-bs-toggle="modal" data-id="modalEmpInp"
-            data-bs-target="#modalInputEmployee">Add
-            Employee</a>
+        <div class="d-flex justify-content-end">
+            <a class="p-3" href="#modalInputTask" data-bs-toggle="modal" data-id="modalTaskInp" data-bs-target="#modalInputTask">Add
+                Task</a>
+            <a class="p-3" href="#modalInputEmployee" data-bs-toggle="modal" data-id="modalEmpInp"
+                data-bs-target="#modalInputEmployee">Add
+                Employee</a>
+        </div>
         <!--ABOVE is <a> for modalTaskInput ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
         <!--removed obsolete btn for old offcanvas-->
 
     </header>
-    <section class="weekschedule">
+    <section>
         <div class="daycontainer text-center"id="weekchart">
             <!--justify-content-center(or space between, start, end etc. sets the 
             positioning of the boxes, hence why the sunday box is now centered.)-->
@@ -94,9 +95,9 @@
                         <p>Store New Task</p>
                         <label for="TaskNameInp" class="form-label">Task Name: </label>
                         <input type="text" class="form-control" id="TaskNameInp">
-                        <label for="TaskDayInp" class="form-label">Day (Capital first letter, spelled out): </label>
+                        <label for="TaskDayInp" class="form-label">Day (Capitalize and spell, e.g. Monday, Tuesday): </label>
                         <input type="text" class="form-control" id="TaskDayInp">
-                        <label for="TaskStartHr" class="form-label">Start Hour (24-hr format): </label>
+                        <label for="TaskStartHr" class="form-label">Start Hour (24hr, example: 3pm would be "15"): </label>
                         <input type="text" class="form-control" id="TaskStartHr">
                         <label for="TaskStartMin" class="form-label">Start Minutes: </label>
                         <input type="text" class="form-control" id="TaskStartMin">
@@ -180,41 +181,8 @@
                     <th class="task-columns" scope="col">Workdays</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">A</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                <tr>
-                    <th scope="row">B</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                <tr>
-                    <th scope="row">C</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                <tr>
-                    <th scope="row">D</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                <tr>
-                    <th scope="row">E</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                    <th scope="row">F</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                <tr>
-                    <th scope="row">G</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
+            <tbody id="statsTable">
+                <!--Stats render here dynamically-->
             </tbody>
         </table>
     </section>
