@@ -73,11 +73,11 @@ width: 400px;
 height: 200px;
 margin: 50px;
 align-self: center;
-background-color: black;
-border-collapse: collapse;
-outline: 200px;
-color: black;
 
+}
+
+#weekly-stats-sheet{
+    outline: auto;
 }
 
 @media screen and (px) {
