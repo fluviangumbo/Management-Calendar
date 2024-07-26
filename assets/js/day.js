@@ -1,7 +1,7 @@
 const day = new URLSearchParams(location.search).get("day")
 const backBtn = document.querySelector('#back');
 // pulls data 
-const allTasks = pullTaskData();
+const allTasks = pullTaskData(); // will these need to rerun if the data get's updated?
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
 const rosterEl = document.querySelector('#empDisplay');
