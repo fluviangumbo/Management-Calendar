@@ -12,7 +12,12 @@ body,
     padding: 0;
 }
 
-
+#back {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    margin: 10px;
+}
 
 body {
     font-family: sans-serif;
