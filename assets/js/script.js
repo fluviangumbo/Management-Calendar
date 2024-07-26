@@ -110,12 +110,12 @@ function addTask(event) {
     assigned: [],
     day: taskDayInp.value,
     startHr: Number(taskStartHr.value),
-    startMin: Number(taskStartMin.value), //time is showing as single digit when someone enters 0
+    startMin: Number(taskStartMin.value), 
     duration: Number(taskDurationInp.value),
   };
 
-  if (taskData.startMin < 1) {
-    taskData.startMin = '00';
+  if (taskData.startMin < 10) {
+    taskData.startMin = `0${taskData.startMin}`;
   }
   
   taskStoreLocalStorage(taskData);
@@ -130,8 +130,6 @@ function addTask(event) {
   renderWeek();
 }
 
-
-// to pull an employee's specific info: selectedEmpData = pullEmpData()[EMP_INDEX].KEY; pullTaskDat()[no-task-index].KEY;
 
 function empStoreLocalStorage(newEmpData) {
   let existingEmpData = pullEmpData();
@@ -255,7 +253,7 @@ function renderStats() {
     rowTasks.textContent = empDisplay.tasks;
 
     const rowDays = document.createElement('td');
-    rowDays.textContent = empDisplay.days; // should be in order
+    rowDays.textContent = empDisplay.days;
 
     empStat.appendChild(empRow);
     empStat.appendChild(rowTasks);
@@ -265,8 +263,6 @@ function renderStats() {
   });
 }
 
-
-//MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
 function initCompanyName() {
   let compName = localStorage.getItem('companyName') || '';
@@ -280,6 +276,7 @@ function initCompanyName() {
   document.getElementById('companyName').textContent = compName;
 }
 
+
 function setCompanyName(event) {
   event.preventDefault();
   localStorage.setItem('companyName', document.getElementById('compNameInp').value.trim());
@@ -291,12 +288,6 @@ taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
 compFormEl.addEventListener('submit', setCompanyName);
 
-
-
-//are the below calls necessary with them being called in the above functions?
-//renderTasks();
-//renderStats();
-//lastKnownMode();
 initCompanyName();
 renderWeek();
 renderStats();
