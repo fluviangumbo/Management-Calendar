@@ -68,12 +68,14 @@ header{
 }
 
 .days-column {
-    width: 20%;
+    width: 40%;
+}
+.task-columns {
+    width: 15%;
 }
 
 #workstats-container-2 {
     /* fill */
-width: 400px;
 height: 200px;
 margin: 50px;
 align-self: center;
