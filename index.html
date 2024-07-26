@@ -21,8 +21,8 @@
             data-bs-target="#modalInputEmployee">Add
             Employee</a>
         <!--ABOVE is <a> for modalTaskInput ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-            aria-controls="offcanvasBottom">Toggle Bottom Offcanvas</button>
+        <!-- <button id="empAssignment" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
 
     </header>
     <section class="weekschedule">
@@ -30,11 +30,10 @@
             <!--justify-content-center(or space between, start, end etc. sets the 
             positioning of the boxes, hence why the sunday box is now centered.)-->
             <div class="row justify-content-center" id="weekday">
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
-                    <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Monday">
+                    <a type="monbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Mon
                     </a>
-                    <button type="monbutton" class="btn btn-secondary dayLink" data-id="Monday"></button>
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
@@ -45,60 +44,56 @@
                 https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
                 col- defaults to 12 for each set size.-->
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
-                    <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
+                    <a type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday">
                         Tue
                     </a>
-                    <button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button>
+                    <!--<button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button> - commenting this out swo we can see the format that we use to have and troubleshoot the styling this affects -->
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
-                    <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
+                    <!-- <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">- this is how the anchors used to look-->
+                    <a type="wedbutton" class="btn btn-secondary dayLink" data-id="Wednesday">
                         Wed
                     </a>
-                    <button type="wedbutton" class="btn btn-secondary dayLink" data-id="Wednesday"></button>
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
-                    <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
+                    <a type="thurbutton" class="btn btn-secondary dayLink" data-id="Thursday">
                         Thur
                     </a>
-                    <button type="thurbutton" class="btn btn-secondary dayLink" data-id="Thursday"></button>
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
-                    <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">
+                    <a type="fributton" class="btn btn-secondary dayLink" data-id="Friday">
                         Fri
                     </a>
-                    <button type="fributton" class="btn btn-secondary dayLink" data-id="Friday"></button>
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
-                    <a href="#modalDay" class="" data-bs-toggle="modal" data-bs-target="#modalDay">
+                    <a type="satbutton" class="btn btn-secondary dayLink" data-id="Saturday">
                         Sat
                     </a>
-                    <button type="satbutton" class="btn btn-secondary dayLink" data-id="Saturday"></button>
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
                     </ul>
                 </div>
                 <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl">
-                    <a href="#modalDay" class="" data-bs-toggle="modal" data-bs-target="#modalDay">
+                    <a type="sunbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Sun
                     </a>
-                    <button type="sunbutton" class="btn btn-secondary dayLink" data-id="Monday"></button>
                     <ul class="list-group">
                         <li class="list-group-item">Employees assigned: 99</li>
                         <li class="list-group-item">Tasks Assigned: 99</li>
@@ -108,25 +103,6 @@
         </div>
     </section>
 
-    <div class="modal" tabindex="-1" id="modalDay">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Select Your Day</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="day-focus">
-                        <p>Day you select</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--below is modal for TASKINPUT=VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-->
     <div class="modal" tabindex="-1" id="modalInputTask">
@@ -190,13 +166,34 @@
     </div>
 
 
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body small">
-            ...
+        <div class="offcanvas-body">
+            <h2> Assign Tasks </h2>
+
+            <div>
+                 <select id="daySelect" class="form-select">
+                    <option id="dropMon" class="dropdown-item">Monday</option>
+                    <option id="dropTue" class="dropdown-item">Tuesday</option>
+                    <option id="dropWed" class="dropdown-item">Wednesday</option>
+                    <option id="dropThu" class="dropdown-item">Thursday</option>
+                    <option id="dropFri" class="dropdown-item">Friday</option>
+                    <option id="dropSat" class="dropdown-item">Saturday</option>
+                    <option id="dropSun" class="dropdown-item">Sunday</option>
+                </select> 
+                <select id="nameSelect" class="form-select">
+
+                </select>
+                <select id="taskSelect" class="form-select">
+
+                </select>
+                <button type="submit" id="assignmentBtn">Assign to Task</button>
+            </div>
+
+
         </div>
     </div>
 
@@ -258,6 +255,7 @@
     </section>
 
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/logic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

@@ -64,11 +64,12 @@ table {
     border-collapse: collapse;
 }
 
-.task-list-item{
+.emp-list-item{ /*listed as task list, but on employee element */
   margin: 1%;
   font-weight: 600;
   font-size: larger;
 }
+
 .card-body2{
   margin:2%;
 }
