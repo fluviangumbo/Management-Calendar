@@ -1,36 +1,32 @@
-:root {
-
-}
-
-h2{
+h2 {
     font-size: 100px;
 }
-a{
+
+a {
     font-size: larger;
 }
 
-
-body{
+body {
     overflow-x: hidden; 
     min-height: 900px;
     background-color: rgb(185, 215, 240) !important; 
 }
 
-header{
+header {
     background-color: rgb(185, 215, 240);
 }
 
-.workstats{
+.workstats {
     display: block;
     border-radius: 2rem;
     height: 30px;
 }
 
-.weekday{
+.weekday {
     min-height: 1000px;
 }
 
-.btn{
+.btn {
     margin: .5%;
     outline: auto;
     outline-color: black;
@@ -38,17 +34,17 @@ header{
     outline-width: .07cm;
 }
 
-.row{
+.row {
     font-size: larger;
     font-weight: bold;
     background-color: rgb(130, 189, 240);
 }
 
-.col{
+.col {
     margin: 10px;
 }
 
-.list-group{
+.list-group {
     background-color: white;
     margin: 5px;
     font-size: 20px;
@@ -58,29 +54,17 @@ header{
     outline-style: solid;
 }
 
-.list-group-item{
+.list-group-item {
     min-height: 100px;
     font-weight: 300;
     font-weight: bold;
-}
-
-/* .dark {
-    background-color: 
-} */
-
-.weekschedule {
-    /* fill */
-}
-
-.day {
-    /* fill */
 }
 
 .days-column {
     width: 40%;
 }
 
-.Employee-Names-Stats{
+.Employee-Names-Stats {
     width: 40%;
 }
 
@@ -93,19 +77,15 @@ width: 94%;
 height: 200px;
 margin: 50px;
 align-self: center;
-
 }
 
-#weekly-stats-sheet{
+#weekly-stats-sheet {
     outline: auto;
     outline-style: inset;
 }
 
-#weekday{
+#weekday {
     padding-top: 10px;
     padding-bottom: 1%;
     margin: 0px;
-}
-@media screen and (px) {
-
 }

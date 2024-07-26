@@ -54,7 +54,7 @@ h2 {
     flex: 1;
 }
 
-.card-title{
+.card-title {
   font-size: larger;
 }
 
@@ -69,17 +69,17 @@ table {
     border-collapse: collapse;
 }
 
-.emp-list-item{ /*listed as task list, but on employee element */
+.emp-list-item {
   margin: 1%;
   font-weight: 600;
   font-size: larger;
 }
 
-.card-body2{
+.card-body2 {
   margin:2%;
 }
 
-#empAssignment{
+#empAssignment {
     outline: auto;
     outline-color: rgb(66, 66, 66);
     outline-style:solid
