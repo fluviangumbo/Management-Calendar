@@ -110,7 +110,7 @@ function addTask(event) {
     assigned: [],
     day: taskDayInp.value,
     startHr: Number(taskStartHr.value),
-    startMin: Number(taskStartMin.value), 
+    startMin: Number(taskStartMin.value),
     duration: Number(taskDurationInp.value),
   };
 
