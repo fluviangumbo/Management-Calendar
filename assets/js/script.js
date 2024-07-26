@@ -114,6 +114,10 @@ function addTask(event) {
     duration: Number(taskDurationInp.value),
   };
 
+  if (taskData.startHr < 10) {
+    taskData.startHr = `0${taskData.startHr}`;
+  }
+
   if (taskData.startMin < 10) {
     taskData.startMin = `0${taskData.startMin}`;
   }
