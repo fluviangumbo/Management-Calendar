@@ -1,26 +1,26 @@
-const day = new URLSearchParams(location.search).get("day")
+const day = new URLSearchParams(location.search).get("day");
 const backBtn = document.querySelector('#back');
 // pulls data 
 const allTasks = pullTaskData();
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
 const rosterEl = document.querySelector('#empDisplay');
-const assignBtn = document.querySelector('#assignmentBtn')
-const empAssignBtn = document.querySelector('#empAssignment') // for the offcavnasbtn
+const assignBtn = document.querySelector('#assignmentBtn');
+const empAssignBtn = document.querySelector('#empAssignment'); // for the offcavnasbtn
 
 const currentDayTasks = allTasks.filter(function (task) {
-  return task.day === day
+  return task.day === day;
 });
 
 // TENTATIVE FUNCTIONALITY FOR ROSTER DISPLAY, NEED TO BE ABLE TO ASSIGN TASKS TO TEST
 function populateRoster() {
   
   const list = document.createElement('ul');
-  const assignedEmployees = []
+  const assignedEmployees = [];
   for (const task of currentDayTasks ){
     for (const employee of allEmps) {
       if (task.assigned.includes(employee.fullName)) {
-        assignedEmployees.push(employee)
+        assignedEmployees.push(employee);
 
           const item = document.createElement('li');
           item.textContent = employee.fullName;
@@ -32,8 +32,8 @@ function populateRoster() {
   }
 
   if (!assignedEmployees.length) {
-    const noAssigned = document.createElement('li')
-    noAssigned.textContent = "No employees assigned to tasks today."
+    const noAssigned = document.createElement('li');
+    noAssigned.textContent = "No employees assigned to tasks today.";
     list.appendChild(noAssigned);
   }
   rosterEl.appendChild(list);
@@ -82,7 +82,7 @@ function taskBuilder(type, task, parentEl) {
     fetchTaskEmps(empList, task);
   } else {
     const noEmp = document.createElement('li');
-    noEmp.textContent = "No employees assigned to task."
+    noEmp.textContent = "No employees assigned to task.";
     empList.appendChild(noEmp);
   }
 
@@ -135,7 +135,7 @@ function populateTaskOffCanv() {
   existingTaskData.forEach(function (taskData) {
     const optionElement = document.createElement('option');
     optionElement.text = `${taskData.task} ${taskData.day}`;
-    optionElement.value = taskData.id
+    optionElement.value = taskData.id;
     selectElement.appendChild(optionElement);
   });
 }
@@ -149,13 +149,13 @@ function taskAssign() {
 
   let selectedEmp = nameSelect.value;
   let selectedTask = taskSelect.value;
-  const tmpTasks = [...allTasks]
+  const tmpTasks = [...allTasks];
 
   const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask);
 
   const updateIndex = tmpTasks.indexOf(taskToUpdate);
-  taskToUpdate.assigned.push(selectedEmp)
-  tmpTasks.splice(updateIndex, 1, taskToUpdate)
+  taskToUpdate.assigned.push(selectedEmp);
+  tmpTasks.splice(updateIndex, 1, taskToUpdate);
 
   localStorage.setItem('taskData', JSON.stringify(tmpTasks));
   location.reload();

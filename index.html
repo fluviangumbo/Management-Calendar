@@ -21,8 +21,7 @@
             data-bs-target="#modalInputEmployee">Add
             Employee</a>
         <!--ABOVE is <a> for modalTaskInput ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
-        <!-- <button id="empAssignment" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+        <!--removed obsolete btn for old offcanvas-->
 
     </header>
     <section class="weekschedule">
@@ -34,7 +33,6 @@
                     <a type="monbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Mon
                     </a>
-                    
                 </div>
                 <!--col-sm-6 states window size equal to or greater than 576px will
                 have a width of 6 out of 12. see bs docs on breakpoints for details
@@ -44,7 +42,7 @@
                     <a type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday">
                         Tue
                     </a>
-                    <!--<button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button> - commenting this out swo we can see the format that we use to have and troubleshoot the styling this affects -->
+                    <!--<button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button> - commenting this out so we can see the format that we used to have and troubleshoot the styling this affects -->
                     
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Wednesday">
@@ -83,7 +81,7 @@
     </section>
 
 
-    <!--below is modal for TASKINPUT=VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-->
+    <!--below is modal for TASKINPUT=VVVVVVVVVVVVVVVVVVVVVVVVVVVVV-->
     <div class="modal" tabindex="-1" id="modalInputTask">
         <div class="modal-dialog modal-dialog-scrollable">
             <form class="modal-content" id="taskInputForm">
@@ -116,7 +114,7 @@
             </form>
         </div>
     </div>
-
+    <!--below is the modal for EMPLOYEE INPUT VVVVVVVVVVVVVVVVVVVVVVV-->
     <div class="modal" tabindex="-1" id="modalInputEmployee">
         <div class="modal-dialog modal-dialog-scrollable">
             <form class="modal-content" id="employeeInputForm">
@@ -132,7 +130,7 @@
                         <label for="lastNameInp" class="form-label">Last Name: </label>
                         <input type="text" class="form-control" id="lastNameInp">
                         <p id="empIndicator"></p>
-                        <!--for going past the MVP we add details on the task, for now just the name to start.-->
+                        <!--for going past the MVP we add more details on the emp.-->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -144,6 +142,7 @@
         </div>
     </div>
 
+    <!--below is the modal for the initial COMPANY NAME that will init on first start with an empty localstorage-->
     <div class="modal" tabindex="-1" id="modalInputCompName">
         <div class="modal-dialog modal-dialog-scrollable">
             <form class="modal-content" id="compNameInpForm">
@@ -169,37 +168,7 @@
         </div>
     </div>
 
-
-    <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h2> Assign Tasks </h2>
-
-            <div>
-                 <select id="daySelect" class="form-select">
-                    <option id="dropMon" class="dropdown-item">Monday</option>
-                    <option id="dropTue" class="dropdown-item">Tuesday</option>
-                    <option id="dropWed" class="dropdown-item">Wednesday</option>
-                    <option id="dropThu" class="dropdown-item">Thursday</option>
-                    <option id="dropFri" class="dropdown-item">Friday</option>
-                    <option id="dropSat" class="dropdown-item">Saturday</option>
-                    <option id="dropSun" class="dropdown-item">Sunday</option>
-                </select> 
-                <select id="nameSelect" class="form-select">
-
-                </select>
-                <select id="taskSelect" class="form-select">
-
-                </select>
-                <button type="submit" id="assignmentBtn">Assign to Task</button>
-            </div>
-
-
-        </div>
-    </div>
+    <!--removed the old offcanvas task assign since its on day.js now, just taking up space. if needed pull again from day.js-->
 
     <!-- work stats.-->
     <section class="workstats" id="workstats-container-2">
