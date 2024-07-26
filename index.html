@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <h2 id="companyName"></h2>
+        <h2 id="companyName" class="p-3"></h2>
         <div class="d-flex justify-content-end">
             <a class="p-3" href="#modalInputTask" data-bs-toggle="modal" data-id="modalTaskInp" data-bs-target="#modalInputTask">Add
                 Task</a>
@@ -30,7 +30,7 @@
             <!--justify-content-center(or space between, start, end etc. sets the 
             positioning of the boxes, hence why the sunday box is now centered.)-->
             <div class="row justify-content-center" id="weekday">
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Monday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Monday">
                     <a type="monbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Mon
                     </a>
@@ -39,39 +39,39 @@
                 have a width of 6 out of 12. see bs docs on breakpoints for details
                 https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
                 col- defaults to 12 for each set size.-->
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Tuesday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Tuesday">
                     <a type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday">
                         Tue
                     </a>
                     <!--<button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button> - commenting this out so we can see the format that we used to have and troubleshoot the styling this affects -->
                     
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Wednesday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Wednesday">
                     <!-- <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">- this is how the anchors used to look-->
                     <a type="wedbutton" class="btn btn-secondary dayLink" data-id="Wednesday">
                         Wed
                     </a>
                     
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Thursday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Thursday">
                     <a type="thurbutton" class="btn btn-secondary dayLink" data-id="Thursday">
                         Thur
                     </a>
                     
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Friday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Friday">
                     <a type="fributton" class="btn btn-secondary dayLink" data-id="Friday">
                         Fri
                     </a>
                     
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Saturday">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Saturday">
                     <a type="satbutton" class="btn btn-secondary dayLink" data-id="Saturday">
                         Sat
                     </a>
                     
                 </div>
-                <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl" id="Sunday">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl mt-2" id="Sunday">
                     <a type="sunbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Sun
                     </a>
