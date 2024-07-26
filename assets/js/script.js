@@ -180,24 +180,37 @@ function addEmp(event) {
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
+
+
+function renderWeek() {
+  for (let i = 0; i < 7; i++) {
+    dayInfo(i);
+  }
+}
+
+
+function dayInfo(index) {
+  const hoursArray = calcDayHours();
+  const taskCountArr = calcDayTasks();
+  const day = document.querySelector(`#${weekdays[index]}`);
+  const dayList = document.createElement('ul');
+  dayList.classList.add('list-group');
+
+  const taskItem = document.createElement('li');
+  const hoursItem = document.createElement('li');
+  taskItem.classList.add('list-group-item');
+  hoursItem.classList.add('list-group-item');
+
+  taskItem.textContent = `Task Count: ${taskCountArr[index]}`;
+  hoursItem.textContent = `Total Work Hours: ${hoursArray[index]}`;
+
+  dayList.appendChild(taskItem);
+  dayList.appendChild(hoursItem);
+  day.appendChild(dayList);
+}
+
 //MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
-
-function calcDayHours () {
-  let totalHours = 0;
-  pullTaskData()
-  pullEmpData()
-
-  for (let i = 0; i < 7; i++) {
-    for (let j = 0; j < allTasks.length; j++) {
-      if (weekday[i] === allTasks[j].day) {
-        totalHours += (allTasks[j].assigned.length)*(allTasks[j].duration);
-      }
-    }
-  }
-  
-  return totalHours;
-}
 
 //create a function to save the assigned emp to task for day, while not allowing duplicates.
 function initCompanyName() {
@@ -229,3 +242,5 @@ initCompanyName();
 //renderTasks();
 //renderStats();
 //lastKnownMode();
+
+renderWeek();

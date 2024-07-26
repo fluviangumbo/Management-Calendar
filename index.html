@@ -34,70 +34,49 @@
                     <a type="monbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Mon
                     </a>
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
                 <!--col-sm-6 states window size equal to or greater than 576px will
                 have a width of 6 out of 12. see bs docs on breakpoints for details
                 https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
                 col- defaults to 12 for each set size.-->
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Tuesday">
                     <a type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday">
                         Tue
                     </a>
                     <!--<button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button> - commenting this out swo we can see the format that we use to have and troubleshoot the styling this affects -->
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Wednesday">
                     <!-- <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">- this is how the anchors used to look-->
                     <a type="wedbutton" class="btn btn-secondary dayLink" data-id="Wednesday">
                         Wed
                     </a>
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Thursday">
                     <a type="thurbutton" class="btn btn-secondary dayLink" data-id="Thursday">
                         Thur
                     </a>
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Friday">
                     <a type="fributton" class="btn btn-secondary dayLink" data-id="Friday">
                         Fri
                     </a>
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl" id="Saturday">
                     <a type="satbutton" class="btn btn-secondary dayLink" data-id="Saturday">
                         Sat
                     </a>
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
-                <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl" id="Sunday">
                     <a type="sunbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Sun
                     </a>
-                    <ul class="list-group">
-                        <li class="list-group-item">Employees assigned: 99</li>
-                        <li class="list-group-item">Tasks Assigned: 99</li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>
@@ -228,9 +207,8 @@
             <thead>
                 <tr>
                     <th class="Employee-Names-Stats" cscope="col">Employee Names</th>
-                    <th class="task-columns" scope="col">Assigned</th>
-                    <th class="task-columns" scope="col">In Review</th>
-                    <th class="task-columns" scope="col">Completed</th>
+                    <th class="task-columns" scope="col">Tasks</th>
+                    <th class="task-columns" scope="col">Workdays</th>
                 </tr>
             </thead>
             <tbody>
@@ -238,56 +216,50 @@
                     <th scope="row">A</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
                 <tr>
                     <th scope="row">B</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
                 <tr>
                     <th scope="row">C</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
                 <tr>
                     <th scope="row">D</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
                 <tr>
                     <th scope="row">E</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
                     <th scope="row">F</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
                 <tr>
                     <th scope="row">G</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>mark</td>
                 </tr>
             </tbody>
         </table>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
         <script src="./assets/js/logic.js"></script>
         <script src="./assets/js/script.js"></script>
         
+
 </body>
 
 </html>
