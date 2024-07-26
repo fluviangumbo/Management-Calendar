@@ -13,6 +13,7 @@ a{
 body{
     overflow-x: hidden; 
     min-height: 900px;
+    background-color: rgb(185, 215, 240) !important; 
 }
 
 header{
