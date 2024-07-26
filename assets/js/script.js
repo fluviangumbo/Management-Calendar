@@ -18,7 +18,10 @@ const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
 
-
+const compFormEl = document.querySelector('#compNameInpForm')
+const compNameInp = document.querySelector('#compNameInp')
+const compIndicator = document.querySelector('#compIndicator')
+const compNameModal = new bootstrap.Modal(document.getElementById('modalInputCompName'));
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -180,14 +183,31 @@ function addEmp(event) {
 //MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
 //create a function to save the assigned emp to task for day, while not allowing duplicates.
+function initCompanyName() {
+  let compName = localStorage.getItem('companyName') || '';
+    
+  if (!compName) {
+    
+    compNameModal.show();
+    return
+  }
+  compNameModal.hide();
+  document.getElementById('companyName').textContent = compName;
+}
+
+function setCompanyName(event) {
+  event.preventDefault();
+  localStorage.setItem('companyName', document.getElementById('compNameInp').value.trim())
+  initCompanyName()
+}
 
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
+compFormEl.addEventListener('submit', setCompanyName);
 
 
-
-
+initCompanyName();
 //are the below calls necessary with them being called in the above functions?
 //renderTasks();
 //renderStats();
