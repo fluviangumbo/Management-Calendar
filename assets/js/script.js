@@ -1,10 +1,10 @@
-// global variables
+// globa  constiables
 const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
-//darkmode vars^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
-//
-//task input vars^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+//task inpu consts^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
 const taskDayInp = document.querySelector('#TaskDayInp');
@@ -12,11 +12,13 @@ const taskStartHr = document.querySelector('#TaskStartHr');
 const taskStartMin = document.querySelector('#TaskStartMin');
 const taskDurationInp = document.querySelector('#TaskDurationInp');
 const taskIndicatorEl = document.querySelector('#taskIndicator');
-//employee input vars ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//employee inpu consts ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
+
+
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -81,14 +83,11 @@ function renderStats() {
   //Display to page
 }
 
-function pullTaskData () { //adding for use on day.html and modals, see pullEmpData()
-  let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
-  return taskList;
-}
 
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
+  newTaskData.id = existingTaskData.length
   taskData.push(newTaskData);
   let updatedTaskData = JSON.stringify(taskData);
   localStorage.setItem('taskData', updatedTaskData)
@@ -134,10 +133,7 @@ function addTask(event) {
   //renderStats();
 }
 
-function pullEmpData () { //adding separate function for multiple calls throughout logic
-  let stored = JSON.parse(localStorage.getItem('empsData')) || [];
-  return stored;
-}
+
 // to pull an employee's specific info: selectedEmpData = pullEmpData()[EMP_INDEX].KEY; pullTaskDat()[no-task-index].KEY;
 
 function empStoreLocalStorage(newEmpData) {
@@ -162,9 +158,10 @@ function addEmp(event) {
   let newEmpIndex = pullEmpData().length;
 
   const empData = {
-    firstName: firstNameInp.value,
-    lastName: lastNameInp.value,
+    firstName: firstNameInp.value.trim(),
+    lastName: lastNameInp.value.trim(),
     index: newEmpIndex,
+    fullName: `${firstNameInp.value.trim()} ${lastNameInp.value.trim()}`
   };
 
   empStoreLocalStorage(empData);
@@ -180,9 +177,33 @@ function addEmp(event) {
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
+//MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
+
+
+function calcDayHours () {
+  let totalHours = 0;
+  pullTaskData()
+  pullEmpData()
+
+  for (let i = 0; i < 7; i++) {
+    for (let j = 0; j < allTasks.length; j++) {
+      if (weekday[i] === allTasks[j].day) {
+        totalHours += (allTasks[j].assigned.length)*(allTasks[j].duration);
+      }
+    }
+  }
+  
+  return totalHours;
+}
+
+//create a function to save the assigned emp to task for day, while not allowing duplicates.
+
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
+
+
+
 
 //are the below calls necessary with them being called in the above functions?
 //renderTasks();
