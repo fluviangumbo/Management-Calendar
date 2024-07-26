@@ -15,6 +15,8 @@
   <header>
     <h2>Company Name?</h2>
     <button type="button" id="back">Back</button>
+    <button id="empAssignment" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
   </header>
   <div class="wrapper">
     <div class="card">
@@ -37,9 +39,37 @@
     </div>
   </div>
 
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <h2> Assign Tasks </h2>
+
+        <div>
+            <!-- <select id="daySelect" class="form-select">
+                <option id="dropMon" class="dropdown-item">Monday</option>
+                <option id="dropTue" class="dropdown-item">Tuesday</option>
+                <option id="dropWed" class="dropdown-item">Wednesday</option>
+                <option id="dropThu" class="dropdown-item">Thursday</option>
+                <option id="dropFri" class="dropdown-item">Friday</option>
+                <option id="dropSat" class="dropdown-item">Saturday</option>
+                <option id="dropSun" class="dropdown-item">Sunday</option>
+            </select> -->
+            <select id="nameSelect" class="form-select">
+
+            </select>
+            <select id="taskSelect" class="form-select">
+
+            </select>
+            <button type="button" id="assignmentBtn">Assign to Task</button>
+        </div>
 
 
-  <script src="./assets/js/script.js"></script>
+    </div>
+</div>
+  <script src="./assets/js/logic.js"></script>
   <script src="./assets/js/day.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
