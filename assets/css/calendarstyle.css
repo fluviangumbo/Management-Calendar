@@ -37,7 +37,7 @@ h2 {
 }
 
 .card {
-    background-color: rgb(185, 215, 240) !important;
+    background-color: white !important;
     border-radius: 5px;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
