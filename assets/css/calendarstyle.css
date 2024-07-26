@@ -16,7 +16,7 @@ body,
 
 body {
     font-family: sans-serif;
-    background-color: #f9fbfd;
+    background-color: #97bde6 !important;
 }
 
 .wrapper {
@@ -74,3 +74,8 @@ table {
   margin:2%;
 }
 
+#empAssignment{
+    outline: auto;
+    outline-color: rgb(66, 66, 66);
+    outline-style:solid
+}
