@@ -18,7 +18,7 @@ function populateRoster() {
 
   const list = document.createElement('ul');
   const assignedEmployees = [];
-  for (const task of currentDayTasks ){
+  for (const task of currentDayTasks ) {
     for (const employee of allEmps) {
       if (task.assigned.includes(employee.fullName)) {
         assignedEmployees.push(employee);
