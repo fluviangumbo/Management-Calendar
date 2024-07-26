@@ -128,7 +128,6 @@ function addTask(event) {
   }, 5000);
 
   renderWeek();
-  renderStats();
 }
 
 
@@ -171,7 +170,6 @@ function addEmp(event) {
     empIndicatorEl.textContent = "";
   }, 5000);
 
-  renderWeek();
   renderStats();
 }
 
@@ -187,6 +185,11 @@ function dayInfo(index) {
   const hoursArray = calcDayHours();
   const taskCountArr = calcDayTasks();
   const day = document.querySelector(`#${weekdays[index]}`);
+
+  while (day.children.length > 0) {
+    day.removeChild(day.children[0]);
+  }
+  
   const dayList = document.createElement('ul');
   dayList.classList.add('list-group');
 
@@ -207,6 +210,10 @@ function dayInfo(index) {
 function renderStats() {
   const empStats = pullEmpData();
   const taskStats = pullTaskData();
+
+  while (stats.children.length > 0) {
+    stats.removeChild(stats.children[0]);
+  }
   
   empStats.forEach(function(emp) {
     let empDisplay = {
