@@ -3,7 +3,7 @@ const toggleBtn = document.querySelector('#toggle');
 const mode = localStorage.getItem('mode');
 //darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const daylinks = document.querySelectorAll('.dayLink');
-//
+
 //task inpu consts^^^^^^^^^^^^^^^^^^^^^^^^^^^
 const taskFormEl = document.querySelector('#taskInputForm');
 const taskNameInp = document.querySelector('#TaskNameInp');
@@ -17,8 +17,8 @@ const empFormEl = document.querySelector('#employeeInputForm')
 const firstNameInp = document.querySelector('#firstNameInp');
 const lastNameInp = document.querySelector('#lastNameInp');
 const empIndicatorEl = document.querySelector('#empIndicator');
-const empAssignBtn = document.querySelector('#empAssignment')
-const assignBtn = document.querySelector('#assignmentBtn')
+
+
 //when "day" is clicked, opens day.html?day=*day clicked, no asteriks*
 const weekdays = [
   'Monday',
@@ -83,14 +83,11 @@ function renderStats() {
   //Display to page
 }
 
-function pullTaskData () { //adding for use on day.html and modals, see pullEmpData()
-  let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
-  return taskList;
-}
 
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
+  newTaskData.id = existingTaskData.length
   taskData.push(newTaskData);
   let updatedTaskData = JSON.stringify(taskData);
   localStorage.setItem('taskData', updatedTaskData)
@@ -136,10 +133,7 @@ function addTask(event) {
   //renderStats();
 }
 
-function pullEmpData () { //adding separate function for multiple calls throughout logic
-  let stored = JSON.parse(localStorage.getItem('empsData')) || [];
-  return stored;
-}
+
 // to pull an employee's specific info: selectedEmpData = pullEmpData()[EMP_INDEX].KEY; pullTaskDat()[no-task-index].KEY;
 
 function empStoreLocalStorage(newEmpData) {
@@ -164,9 +158,10 @@ function addEmp(event) {
   let newEmpIndex = pullEmpData().length;
 
   const empData = {
-    firstName: firstNameInp.value,
-    lastName: lastNameInp.value,
+    firstName: firstNameInp.value.trim(),
+    lastName: lastNameInp.value.trim(),
     index: newEmpIndex,
+    fullName: `${firstNameInp.value.trim()} ${lastNameInp.value.trim()}`
   };
 
   empStoreLocalStorage(empData);
@@ -182,30 +177,7 @@ function addEmp(event) {
   //renderTasks();  i think these will go in day.js and will be called when the page is switched
   //renderStats();
 }
-// create a function that populates the form select element in the offcanvas using the 
-function populateEmpOffCanv() {
-  let selectElement = document.getElementById('nameSelect');
-  let existingEmpData = pullEmpData();
-  selectElement.innerHTML = '';
-  
-  existingEmpData.forEach(function (employee) {
-  const optionElement = document.createElement('option');
-    optionElement.text = `${employee.firstName} ${employee.lastName}`;
-    selectElement.appendChild(optionElement);
-});
-}
-
-function populateTaskOffCanv() {
-  let selectElement = document.getElementById('taskSelect');
-  let existingTaskData = pullTaskData();
-  selectElement.innerHTML = '';
-  
-  existingTaskData.forEach(function (taskData) {
-  const optionElement = document.createElement('option');
-    optionElement.text = `${taskData.task}`;
-    selectElement.appendChild(optionElement);
-});
-}
+//MOVED FUNCTIONS FOR ASSIGN TO DAY.JS
 
 
 function calcDayHours () {
@@ -229,8 +201,7 @@ function calcDayHours () {
 
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
-empAssignBtn.addEventListener('click', populateEmpOffCanv);
-empAssignBtn.addEventListener('click', populateTaskOffCanv);
+
 
 
 

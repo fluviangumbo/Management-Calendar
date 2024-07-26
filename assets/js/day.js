@@ -1,55 +1,49 @@
 const day = new URLSearchParams(location.search).get("day")
 const backBtn = document.querySelector('#back');
 // pulls data 
-const allTasks = pullTaskData(); // will these need to rerun if the data get's updated?
+const allTasks = pullTaskData();
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
 const rosterEl = document.querySelector('#empDisplay');
+const assignBtn = document.querySelector('#assignmentBtn')
+const empAssignBtn = document.querySelector('#empAssignment') // for the offcavnasbtn
 
-const currentDayTasks = allTasks.filter( function (task) {
-  return task.day === day 
+const currentDayTasks = allTasks.filter(function (task) {
+  return task.day === day
 });
 
 // TENTATIVE FUNCTIONALITY FOR ROSTER DISPLAY, NEED TO BE ABLE TO ASSIGN TASKS TO TEST
-const currentDayEmpByIndex = buildRoster();
- 
-function buildRoster () {
-  const roster = [];
-
-  currentDayTasks.forEach(function (assignment) {
-    assignment.assigned.forEach(function (employee) {
-      roster.push(employee);
-    });
-  });
-
-  const empArray = [];
+function populateRoster() {
   
-  roster.forEach(function (index) {
-    if (!empArray.includes(index)) {
-      empArray.push(index);
+  const list = document.createElement('ul');
+  const assignedEmployees = []
+  for (const task of currentDayTasks ){
+    for (const employee of allEmps) {
+      if (task.assigned.includes(employee.fullName)) {
+        assignedEmployees.push(employee)
+
+          const item = document.createElement('li');
+          item.textContent = employee.fullName;
+          list.appendChild(item);
+        
+      }
+      
     }
-  });
-
-  return empArray;
-};
-
-
-function dayEmployees (assignedArray) {
-  if (assignedArray.length > 0) {
-    assignedArray.forEach(function (working) {
-      const worker = document.createElement('li');
-      worker.textContent = allEmps[working].fullName;
-      rosterEl.appendChild(worker);
-    });
-  } else {
-    const noAssigned = document.createElement('li');
-    noAssigned.textContent = "No employees are currently assigned to tasks today.";
-    rosterEl.appendChild(noAssigned);
   }
+
+  if (!assignedEmployees.length) {
+    const noAssigned = document.createElement('li')
+    noAssigned.textContent = "No employees assigned to tasks today."
+    list.appendChild(noAssigned);
+  }
+  rosterEl.appendChild(list);
 }
 
 
-function buildDay () {
+
+
+
+function buildDay() {
   if (currentDayTasks.length > 0) {
     currentDayTasks.forEach(function (task) {
       taskBuilder('div', task, taskEl);
@@ -60,14 +54,14 @@ function buildDay () {
 }
 
 
-function blankTasks () {
+function blankTasks() {
   const blank = document.createElement('div');
   blank.textContent = "No tasks yet!";
   taskEl.appendChild(blank);
 }
 
 
-function taskBuilder (type, task, parentEl) {
+function taskBuilder(type, task, parentEl) {
   const elem = document.createElement(type);
   elem.classList.add('card-body2');
 
@@ -82,7 +76,7 @@ function taskBuilder (type, task, parentEl) {
   const info = document.createElement('p');
   info.textContent = `Start Time: ${taskStart}  Duration: ${taskDuration}`;
   info.classList.add('card-text');
-  
+
   const empList = document.createElement('ul');
   if (task.assigned.length > 0) {
     fetchTaskEmps(empList, task);
@@ -101,30 +95,79 @@ function taskBuilder (type, task, parentEl) {
 
 
 function fetchTaskEmps(assignedEl, dayTask) {
-    for(let i = 0; i < allEmps.length; i++) {
-      if (dayTask.assigned.includes(i)) {
-        empBuilder('li', allEmps[i], assignedEl);
-      }
-    }
+  allEmps.filter((emp) => dayTask.assigned.includes(emp.fullName)).forEach((emp) => empBuilder('li', emp, assignedEl));
+
+
 }
 
 
-function empBuilder (type, empIndexed, parentEl) {
+function empBuilder(type, empIndexed, parentEl) {
   const emp = document.createElement(type);
   emp.textContent = `${empIndexed.firstName} ${empIndexed.lastName} assigned.`;
   parentEl.appendChild(emp);
 }
-    
+
 
 let redirectURL = '';
 const redirectPage = function (url) {
-    redirectURL = url;
-    location.assign(url);
+  redirectURL = url;
+  location.assign(url);
+};
+
+// create a function that populates the form select element in the offcanvas using the 
+function populateEmpOffCanv() {
+  let selectElement = document.getElementById('nameSelect');
+  let existingEmpData = pullEmpData();
+  selectElement.innerHTML = '';
+
+  existingEmpData.forEach(function (employee) {
+    const optionElement = document.createElement('option');
+    optionElement.text = `${employee.firstName} ${employee.lastName}`;
+    selectElement.appendChild(optionElement);
+  });
+}
+
+function populateTaskOffCanv() {
+  let selectElement = document.getElementById('taskSelect');
+  let existingTaskData = pullTaskData();
+  selectElement.innerHTML = '';
+
+  existingTaskData.forEach(function (taskData) {
+    const optionElement = document.createElement('option');
+    optionElement.text = `${taskData.task} ${taskData.day}`;
+    optionElement.value = taskData.id
+    selectElement.appendChild(optionElement);
+  });
+}
+
+
+//create a function called taskAssign that pushes the employee index value to the assigned value in taskData while getting the values from offcanvas
+
+function taskAssign() {
+  const nameSelect = document.getElementById("nameSelect");
+  const taskSelect = document.getElementById("taskSelect");
+
+  let selectedEmp = nameSelect.value;
+  let selectedTask = taskSelect.value;
+  const tmpTasks = [...allTasks]
+
+  const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask);
+
+  const updateIndex = tmpTasks.indexOf(taskToUpdate);
+  taskToUpdate.assigned.push(selectedEmp)
+  tmpTasks.splice(updateIndex, 1, taskToUpdate)
+
+  localStorage.setItem('taskData', JSON.stringify(tmpTasks));
+  location.reload();
+
 };
 
 
-backBtn.addEventListener('click', function() {redirectPage('index.html')});
 
 
-dayEmployees(currentDayEmpByIndex);
+backBtn.addEventListener('click', function () { redirectPage('index.html') });
+assignBtn.addEventListener('click', function () { taskAssign() });
+empAssignBtn.addEventListener('click', populateEmpOffCanv);
+empAssignBtn.addEventListener('click', populateTaskOffCanv);
+populateRoster();
 buildDay();
