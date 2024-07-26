@@ -9,8 +9,10 @@ a{
     font-size: larger;
 }
 
+
 body{
     overflow-x: hidden; 
+    min-height: 900px;
 }
 
 header{
