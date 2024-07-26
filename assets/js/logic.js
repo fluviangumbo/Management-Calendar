@@ -2,9 +2,48 @@
 function pullTaskData () { //adding for use on day.html and modals, see pullEmpData()
     let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
     return taskList;
-  }
+}
 
-  function pullEmpData () { //adding separate function for multiple calls throughout logic
-    let stored = JSON.parse(localStorage.getItem('empsData')) || [];
-    return stored;
+
+function pullEmpData () { //adding separate function for multiple calls throughout logic
+  let stored = JSON.parse(localStorage.getItem('empsData')) || [];
+  return stored;
+}
+
+
+function calcDayHours () {
+  const totalHours = [];
+  const tasks = pullTaskData();
+
+
+  for (let i = 0; i < 7; i++) {
+    let dayHours = 0;
+    for (let j = 0; j < tasks.length; j++) {
+      if (weekdays[i] === tasks[j].day) {
+        dayHours += Number((tasks[j].assigned.length)*(tasks[j].duration));
+      }
+    }
+    totalHours.push(dayHours);
   }
+  
+  return totalHours; // this will be an array of total hours worked that day, with each index corresponding to weekdays[]
+}
+
+
+function calcDayTasks() {
+  const taskCount = [];
+  const tasks = pullTaskData();
+
+  let dayCount = 0;
+
+  for (let i = 0; i < 7; i++) {
+    for (let j = 0; j < tasks.length; j++) {
+      if (weekdays[i] === tasks[j].day) {
+        dayCount++;
+      }
+    }
+    taskCount.push(dayCount);
+    dayCount = 0;
+  }
+  return taskCount;
+}
