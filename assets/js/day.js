@@ -1,3 +1,5 @@
+// Day page consts
+
 const day = new URLSearchParams(location.search).get("day");
 const backBtn = document.querySelector('#back');
 const allTasks = pullTaskData();
@@ -7,6 +9,8 @@ const rosterEl = document.querySelector('#empDisplay');
 const assignBtn = document.querySelector('#assignmentBtn');
 const empAssignBtn = document.querySelector('#empAssignment');
 
+
+// Filter for the day selected
 const currentDayTasks = allTasks.filter(function (task) {
   return task.day === day;
 });
@@ -41,6 +45,7 @@ function populateRoster() {
 }
 
 
+//Displays the days tasks
 function buildDay() {
   const allTasks = pullTaskData();
   const allEmps = pullEmpData();
@@ -99,6 +104,7 @@ function fetchTaskEmps(assignedEl, dayTask) {
 }
 
 
+//Display the days employees
 function empBuilder(type, empIndexed, parentEl) {
   const emp = document.createElement(type);
   emp.textContent = `${empIndexed.fullName} assigned.`;
@@ -106,6 +112,7 @@ function empBuilder(type, empIndexed, parentEl) {
 }
 
 
+// Redirect functionality
 let redirectURL = '';
 const redirectPage = function (url) {
   redirectURL = url;
@@ -113,6 +120,7 @@ const redirectPage = function (url) {
 };
 
 
+// Offcanvas functions and task assignment on offcanvas
 function populateEmpOffCanv() {
   let selectElement = document.getElementById('nameSelect');
   let existingEmpData = pullEmpData();
@@ -158,11 +166,13 @@ function taskAssign() {
 };
 
 
+//Event Listeners
 backBtn.addEventListener('click', function () { redirectPage('index.html') });
 assignBtn.addEventListener('click', function () { taskAssign() });
 empAssignBtn.addEventListener('click', populateEmpOffCanv);
 empAssignBtn.addEventListener('click', populateTaskOffCanv);
 
 
+// Initialize Day Page
 populateRoster();
 buildDay();
