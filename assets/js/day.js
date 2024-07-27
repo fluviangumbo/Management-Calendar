@@ -66,7 +66,7 @@ function taskBuilder(type, task, parentEl) {
   elem.classList.add('card-body2');
 
   const taskName = task.task;
-  const taskStart = `${task.startHr}:${task.startMin}`;
+  const taskStart = task.startTime;
   const taskDuration = task.duration;
 
   const title = document.createElement('h5');
@@ -133,7 +133,7 @@ function populateTaskOffCanv() {
   existingTaskData.forEach(function (taskData) {
     const optionElement = document.createElement('option');
     optionElement.text = `${taskData.task} ${taskData.day}`;
-    optionElement.value = taskData.id;
+    optionElement.value = taskData.id; // undefined value?
     selectElement.appendChild(optionElement);
   });
 }
@@ -147,7 +147,7 @@ function taskAssign() {
   let selectedTask = taskSelect.value;
   const tmpTasks = [...allTasks];
 
-  const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask);
+  const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask); // what is String(task.id)? undefined?
 
   const updateIndex = tmpTasks.indexOf(taskToUpdate);
   taskToUpdate.assigned.push(selectedEmp);

@@ -10,6 +10,7 @@ const taskNameInp = document.querySelector('#TaskNameInp');
 const taskDayInp = document.querySelector('#TaskDayInp');
 const taskStartHr = document.querySelector('#TaskStartHr');
 const taskStartMin = document.querySelector('#TaskStartMin');
+const taskAMPM = document.querySelector('#TaskAMPM');
 const taskDurationInp = document.querySelector('#TaskDurationInp');
 const taskIndicatorEl = document.querySelector('#taskIndicator');
 //employee inpu consts vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -94,14 +95,11 @@ function addTask(event) {
   if (!taskNameInp.value || !taskDayInp.value || !taskStartHr.value || !taskStartMin.value || !taskDurationInp.value) {
     taskIndicatorEl.textContent = "Cannot be Blank.";
     return;
-  } else if (!weekdays.includes(taskDayInp.value)) {
-    taskIndicatorEl.textContent = "Must enter a day of the week.";
+  } else if (Number(taskDurationInp.value) <= 0) {
+    taskIndicatorEl.textContent = "Please enter a positive number for duration.";
     return;
-  } else if (isNaN(Number(taskStartHr.value)) || isNaN(Number(taskStartMin.value)) || isNaN(Number(taskDurationInp.value))) {
-    taskIndicatorEl.textContent = "Please enter only positive numbers for start and duration.";
-    return;
-  } else if (Number(taskStartHr.value) >= 24 || Number(taskStartHr.value) < 0 || Number(taskStartMin.value) >= 60 || Number(taskStartMin.value) < 0) {
-    taskIndicatorEl.textContent = "Please enter a valid time format.";
+  } else if (Number(taskDurationInp.value) > 24) {
+    taskIndicatorEl.textContent = "Task too long - consider breaking it up into subtasks!";
     return;
   }
 
@@ -109,18 +107,9 @@ function addTask(event) {
     task: taskNameInp.value,
     assigned: [],
     day: taskDayInp.value,
-    startHr: Number(taskStartHr.value),
-    startMin: Number(taskStartMin.value),
+    startTime: `${taskStartHr}:${taskStartMin} ${taskAMPM}`,
     duration: Number(taskDurationInp.value),
   };
-
-  if (taskData.startHr < 10) {
-    taskData.startHr = `0${taskData.startHr}`;
-  }
-
-  if (taskData.startMin < 10) {
-    taskData.startMin = `0${taskData.startMin}`;
-  }
   
   taskStoreLocalStorage(taskData);
   document.getElementById("taskInputForm").reset();

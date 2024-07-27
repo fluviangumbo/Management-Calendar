@@ -95,13 +95,48 @@
                         <p>Store New Task</p>
                         <label for="TaskNameInp" class="form-label">Task Name: </label>
                         <input type="text" class="form-control" id="TaskNameInp">
-                        <label for="TaskDayInp" class="form-label">Day (Capitalize and spell, e.g. Monday, Tuesday): </label>
-                        <input type="text" class="form-control" id="TaskDayInp">
-                        <label for="TaskStartHr" class="form-label">Start Hour (24hr, example: 3pm would be "15"): </label>
-                        <input type="text" class="form-control" id="TaskStartHr">
-                        <label for="TaskStartMin" class="form-label">Start Minutes: </label>
-                        <input type="text" class="form-control" id="TaskStartMin">
-                        <label for="TaskDurationInp" class="form-label">Duration (hours): </label>
+                        <div>
+                            <label for="TaskDayInp" class="form-label">Day (Capitalize and spell, e.g. Monday, Tuesday): </label>
+                            <select class="form-select" id ="TaskDayInp">
+                                <option>Monday</option>
+                                <option>Tuesday</option>
+                                <option>Wednesday</option>
+                                <option>Thursday</option>
+                                <option>Friday</option>
+                                <option>Saturday</option>
+                                <option>Sunday</option>
+                            </select>
+                        </div>
+                        <label for="startSelect" class="form-label">Start Time: </label>
+                        <div class="justify-content-center" id="startSelect">
+                            <div class="d-inline-block">
+                                <select class="form-select" id="TaskStartHr">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <select class="form-select" id="TaskStartMin">
+                                    <option>00</option>
+                                    <option>15</option>
+                                    <option>30</option>
+                                    <option>45</option>
+                                </select>
+                                <select class="form-select" id="TaskAMPM">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label for="TaskDurationInp" class="form-label">Duration (hours, max 24): </label>
                         <input type="text" class="form-control" id="TaskDurationInp">
                         <p id="taskIndicator"></p>
                         <!--for going past the MVP we add details on the task, for now just the name to start.-->
