@@ -26,6 +26,14 @@ header {
     min-height: 1000px;
 }
 
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
 .btn {
     margin: .5%;
     outline: auto;

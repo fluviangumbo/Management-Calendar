@@ -94,12 +94,18 @@ function addTask(event) {
 
   if (!taskNameInp.value || !taskDayInp.value || !taskStartHr.value || !taskStartMin.value || !taskDurationInp.value) {
     taskIndicatorEl.textContent = "Cannot be Blank.";
+    taskIndicatorEl.classList.add('invalid');
+
     return;
   } else if (Number(taskDurationInp.value) <= 0) {
     taskIndicatorEl.textContent = "Please enter a positive number for duration.";
+    taskIndicatorEl.classList.add('invalid');
+
     return;
   } else if (Number(taskDurationInp.value) > 24) {
     taskIndicatorEl.textContent = "Task too long - consider breaking it up into subtasks!";
+    taskIndicatorEl.classList.add('invalid');
+
     return;
   }
 
@@ -115,6 +121,8 @@ function addTask(event) {
   document.getElementById("taskInputForm").reset();
   
   taskIndicatorEl.textContent = "Success! Add another?";
+  taskIndicatorEl.classList.remove('invalid');
+  taskIndicatorEl.classList.add('valid');
 
   setTimeout(function () {
     taskIndicatorEl.textContent = "";
@@ -137,6 +145,8 @@ function addEmp(event) {
 
   if (!firstNameInp.value || !lastNameInp.value) {
     empIndicatorEl.textContent = "Name Fields required." //string cant be too long or it wont show.
+    empIndicatorEl.classList.add('invalid');
+
     return;
   }
 
@@ -156,6 +166,8 @@ function addEmp(event) {
   document.getElementById("employeeInputForm").reset();
 
   empIndicatorEl.textContent = "Success! Add another?";
+  empIndicatorEl.classList.remove('invalid');
+  empIndicatorEl.classList.add('valid');
 
   setTimeout(function () {
     empIndicatorEl.textContent = "";
