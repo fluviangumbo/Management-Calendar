@@ -80,7 +80,22 @@
             </div>
         </div>
     </section>
-
+    <h4 id="assignInstructions">Click on one of the day buttons to view more detailed information and assign tasks to employees!</h4>
+    <!-- work stats.-->
+    <section class="workstats" id="workstats-container-2">
+        <table class="table table-striped" id="weekly-stats-sheet">
+            <thead>
+                <tr>
+                    <th class="Employee-Names-Stats" cscope="col">Employee Names</th>
+                    <th class="task-columns" scope="col">Tasks</th>
+                    <th class="task-columns" scope="col">Workdays</th>
+                </tr>
+            </thead>
+            <tbody id="statsTable">
+                <!--Stats render here dynamically-->
+            </tbody>
+        </table>
+    </section>
 
     <!--below is modal for TASKINPUT=VVVVVVVVVVVVVVVVVVVVVVVVVVVVV-->
     <div class="modal" tabindex="-1" id="modalInputTask">
@@ -205,22 +220,6 @@
     </div>
 
     <!--removed the old offcanvas task assign since its on day.js now, just taking up space. if needed pull again from day.js-->
-
-    <!-- work stats.-->
-    <section class="workstats" id="workstats-container-2">
-        <table class="table table-striped" id="weekly-stats-sheet">
-            <thead>
-                <tr>
-                    <th class="Employee-Names-Stats" cscope="col">Employee Names</th>
-                    <th class="task-columns" scope="col">Tasks</th>
-                    <th class="task-columns" scope="col">Workdays</th>
-                </tr>
-            </thead>
-            <tbody id="statsTable">
-                <!--Stats render here dynamically-->
-            </tbody>
-        </table>
-    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

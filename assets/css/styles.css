@@ -72,11 +72,15 @@ header {
     width: 15%;
 }
 
+#assignInstructions {
+    text-align: center;
+}
+
 #workstats-container-2 {
-width: 94%;
-height: 200px;
-margin: 50px;
-align-self: center;
+    width: 94%;
+    height: 200px;
+    margin: 50px;
+    align-self: center;
 }
 
 #weekly-stats-sheet {
