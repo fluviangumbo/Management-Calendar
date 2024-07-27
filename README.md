@@ -11,9 +11,23 @@ Since our project is a web application, you only need to visit --URL_HERE-- to g
 
 ## Usage
 
-The user will go to the webpage and the calendar will load all previously input data from local storage. If no prior data exists, then the calendar will display an empty view of the week. Each day will link to a separate page that is a spotlight of the tasks that are set for that day and the employees set to work on them.
+The user will go to the webpage and the calendar will load all previously input data from local storage. If no prior data exists, then the application will prompt the user to enter a company name before the calendar will display an empty view of the week. Each day will link to a separate page that is a spotlight of the tasks that are set for that day and the employees set to work on them. At the bottom of the main page is a table that shows all of the employees you have added and their workloads.
 
-You can add new employees and tasks at any time, but please make sure that you follow the instructions when inputting your data. You can link employees to tasks and then use the different views of the application to see your weekly tasks and project hours broken down how you prefer. Please refer any suggestions to improve the site to the email address listed in the contact section below!
+############ IMAGE OF INDEX.HTML AND STATS TABLE
+
+You can add new employees and tasks at any time, but please make sure that you follow the instructions when inputting your data. There are two buttons at the top right of the screen that will open these inputs.
+
+############ IMAGES OF TASK/EMP MODALS
+
+Clicking on one of the buttons above a day on the main page will take you to a breakdown for that specific day of the week and provide you with more information. You will see a display of both the tasks that are set for the day and a list of all employees who are assigned to one of the day's tasks.
+ 
+############ IMAGE OF DAY.HTML
+ 
+This is also where you can link employees to tasks using the button at the top of the day page.
+
+############ IMAGE OF OFFCANVAS ASSIGN
+
+Please refer any suggestions to improve the site to the email address listed in the contact section below!
 
 ## Credits
 
@@ -30,7 +44,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Contact
 
 You can reach out to jroney002@gmail.com with any questions!
-
-## Features?
-
-## Add images for walkthrough
