@@ -1,3 +1,5 @@
+// Pulls Data from Local Storage
+
 function pullTaskData () {
     let taskList = JSON.parse(localStorage.getItem('taskData')) || [];
     return taskList;
@@ -10,6 +12,7 @@ function pullEmpData () {
 }
 
 
+//Calculate Stat Inputs
 function calcDayHours () {
   const totalHours = [];
   const tasks = pullTaskData();
