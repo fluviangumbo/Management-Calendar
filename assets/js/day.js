@@ -1,3 +1,5 @@
+// Day page consts
+
 const day = new URLSearchParams(location.search).get("day");
 const backBtn = document.querySelector('#back');
 const allTasks = pullTaskData();
@@ -7,6 +9,8 @@ const rosterEl = document.querySelector('#empDisplay');
 const assignBtn = document.querySelector('#assignmentBtn');
 const empAssignBtn = document.querySelector('#empAssignment');
 
+
+// Filter for the day selected
 const currentDayTasks = allTasks.filter(function (task) {
   return task.day === day;
 });
@@ -41,6 +45,7 @@ function populateRoster() {
 }
 
 
+//Displays the days tasks
 function buildDay() {
   const allTasks = pullTaskData();
   const allEmps = pullEmpData();
@@ -66,7 +71,7 @@ function taskBuilder(type, task, parentEl) {
   elem.classList.add('card-body2');
 
   const taskName = task.task;
-  const taskStart = `${task.startHr}:${task.startMin}`;
+  const taskStart = task.startTime;
   const taskDuration = task.duration;
 
   const title = document.createElement('h5');
@@ -99,6 +104,7 @@ function fetchTaskEmps(assignedEl, dayTask) {
 }
 
 
+//Display the days employees
 function empBuilder(type, empIndexed, parentEl) {
   const emp = document.createElement(type);
   emp.textContent = `${empIndexed.fullName} assigned.`;
@@ -106,6 +112,7 @@ function empBuilder(type, empIndexed, parentEl) {
 }
 
 
+// Redirect functionality
 let redirectURL = '';
 const redirectPage = function (url) {
   redirectURL = url;
@@ -113,6 +120,7 @@ const redirectPage = function (url) {
 };
 
 
+// Offcanvas functions and task assignment on offcanvas
 function populateEmpOffCanv() {
   let selectElement = document.getElementById('nameSelect');
   let existingEmpData = pullEmpData();
@@ -133,7 +141,7 @@ function populateTaskOffCanv() {
   existingTaskData.forEach(function (taskData) {
     const optionElement = document.createElement('option');
     optionElement.text = `${taskData.task} ${taskData.day}`;
-    optionElement.value = taskData.id;
+    optionElement.value = taskData.id; // undefined value?
     selectElement.appendChild(optionElement);
   });
 }
@@ -147,7 +155,7 @@ function taskAssign() {
   let selectedTask = taskSelect.value;
   const tmpTasks = [...allTasks];
 
-  const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask);
+  const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask); // what is String(task.id)? undefined?
 
   const updateIndex = tmpTasks.indexOf(taskToUpdate);
   taskToUpdate.assigned.push(selectedEmp);
@@ -158,11 +166,13 @@ function taskAssign() {
 };
 
 
+//Event Listeners
 backBtn.addEventListener('click', function () { redirectPage('index.html') });
 assignBtn.addEventListener('click', function () { taskAssign() });
 empAssignBtn.addEventListener('click', populateEmpOffCanv);
 empAssignBtn.addEventListener('click', populateTaskOffCanv);
 
 
+// Initialize Day Page
 populateRoster();
 buildDay();
