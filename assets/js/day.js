@@ -20,23 +20,35 @@ function populateRoster() {
   const allTasks = pullTaskData();
   const allEmps = pullEmpData();
 
+  while (rosterEl.children.length > 0) {
+    rosterEl.removeChild(rosterEl.children[0]);
+  }
+
   const list = document.createElement('ul');
   const assignedEmployees = [];
+  const assignedFiltered = [];
+
   for (const task of currentDayTasks ) {
     for (const employee of allEmps) {
       if (task.assigned.includes(employee.fullName)) {
         assignedEmployees.push(employee);
-
-          const item = document.createElement('li');
-          item.textContent = employee.fullName;
-          list.appendChild(item);
-        
       }
-      
     }
   }
 
-  if (!assignedEmployees.length) {
+  assignedEmployees.forEach(function (emp) {
+    if (!assignedFiltered.includes(emp)) {
+      assignedFiltered.push(emp);
+    }
+  });
+
+  for (const employee of assignedFiltered) {
+    const item = document.createElement('li');
+    item.textContent = employee.fullName;
+    list.appendChild(item);
+  }
+
+  if (!assignedFiltered.length) {
     const noAssigned = document.createElement('li');
     noAssigned.textContent = "No employees assigned to tasks today.";
     list.appendChild(noAssigned);
@@ -162,7 +174,7 @@ function taskAssign() {
   tmpTasks.splice(updateIndex, 1, taskToUpdate);
 
   localStorage.setItem('taskData', JSON.stringify(tmpTasks));
-  location.reload();
+  location.reload(); // ERROR INVOLVED, REMOVE OTHER ELEMENTS
 };
 
 
