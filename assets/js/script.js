@@ -1,30 +1,4 @@
 // global consts
-const toggleBtn = document.querySelector('#toggle');
-const mode = localStorage.getItem('mode');
-//darkmod consts^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-const daylinks = document.querySelectorAll('.dayLink');
-//for the page change^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//task inpu constsvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-const taskFormEl = document.querySelector('#taskInputForm');
-const taskNameInp = document.querySelector('#TaskNameInp');
-const taskDayInp = document.querySelector('#TaskDayInp');
-const taskStartHr = document.querySelector('#TaskStartHr');
-const taskStartMin = document.querySelector('#TaskStartMin');
-const taskAMPM = document.querySelector('#TaskAMPM');
-const taskDurationInp = document.querySelector('#TaskDurationInp');
-const taskIndicatorEl = document.querySelector('#taskIndicator');
-//employee inpu consts vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-const empFormEl = document.querySelector('#employeeInputForm')
-const firstNameInp = document.querySelector('#firstNameInp');
-const lastNameInp = document.querySelector('#lastNameInp');
-const empIndicatorEl = document.querySelector('#empIndicator');
-//
-const compFormEl = document.querySelector('#compNameInpForm');
-const compNameInp = document.querySelector('#compNameInp');
-const compIndicator = document.querySelector('#compIndicator');
-const compNameModal = new bootstrap.Modal(document.getElementById('modalInputCompName'));
-const stats = document.querySelector('#statsTable');
-
 
 const weekdays = [
   'Monday',
@@ -35,6 +9,32 @@ const weekdays = [
   'Saturday',
   'Sunday',
 ];
+
+const daylinks = document.querySelectorAll('.dayLink');
+//for the page change^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+//task input consts vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+const taskFormEl = document.querySelector('#taskInputForm');
+const taskNameInp = document.querySelector('#TaskNameInp');
+const taskDayInp = document.querySelector('#TaskDayInp');
+const taskStartHr = document.querySelector('#TaskStartHr');
+const taskStartMin = document.querySelector('#TaskStartMin');
+const taskAMPM = document.querySelector('#TaskAMPM');
+const taskDurationInp = document.querySelector('#TaskDurationInp');
+const taskIndicatorEl = document.querySelector('#taskIndicator');
+
+//employee input consts vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+const empFormEl = document.querySelector('#employeeInputForm')
+const firstNameInp = document.querySelector('#firstNameInp');
+const lastNameInp = document.querySelector('#lastNameInp');
+const empIndicatorEl = document.querySelector('#empIndicator');
+
+// company input consts
+const compFormEl = document.querySelector('#compNameInpForm');
+const compNameInp = document.querySelector('#compNameInp');
+const compIndicator = document.querySelector('#compIndicator');
+const compNameModal = new bootstrap.Modal(document.getElementById('modalInputCompName'));
+const stats = document.querySelector('#statsTable');
 
 
 //when "day" is clicked, opens day.html?day=*day clicked*, no asteriks.vvvvvvvvv
@@ -48,13 +48,14 @@ daylinks.forEach((link) => {
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
-  newTaskData.id = existingTaskData.length; // I think this is where your id field came from
+  newTaskData.id = existingTaskData.length; // REMOVE???
   taskData.push(newTaskData);
   let updatedTaskData = JSON.stringify(taskData);
   localStorage.setItem('taskData', updatedTaskData);
 }
 
 
+// This function creates task data and stores it locally.
 function addTask(event) {
   event.preventDefault();
 
@@ -106,6 +107,8 @@ function empStoreLocalStorage(newEmpData) {
   localStorage.setItem('empsData', updatedEmpData);
 }
 
+
+// This function created employee data and stores it locally.
 function addEmp(event) {
   event.preventDefault();
 
@@ -143,6 +146,7 @@ function addEmp(event) {
 }
 
 
+// These functions render the page whenit first loads.
 function renderWeek() {
   for (let i = 0; i < 7; i++) {
     dayInfo(i);
@@ -176,6 +180,7 @@ function dayInfo(index) {
 }
 
 
+// This builds the table at the bottom of the main page
 function renderStats() {
   const empStats = pullEmpData();
   const taskStats = pullTaskData();
@@ -235,6 +240,7 @@ function renderStats() {
 }
 
 
+// These functions will direct the user to store a company name.
 function initCompanyName() {
   let compName = localStorage.getItem('companyName') || '';
     
@@ -255,10 +261,13 @@ function setCompanyName(event) {
 }
 
 
+// Listeners
 taskFormEl.addEventListener('submit', addTask);
 empFormEl.addEventListener('submit', addEmp);
 compFormEl.addEventListener('submit', setCompanyName);
 
+
+// Initialize the page
 initCompanyName();
 renderWeek();
 renderStats();
