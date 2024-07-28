@@ -133,7 +133,7 @@ function populateTaskOffCanv() {
   existingTaskData.forEach(function (taskData) {
     const optionElement = document.createElement('option');
     optionElement.text = `${taskData.task} ${taskData.day}`;
-    optionElement.value = taskData.id;
+    //optionElement.value = taskData.id;
     selectElement.appendChild(optionElement);
   });
 }
