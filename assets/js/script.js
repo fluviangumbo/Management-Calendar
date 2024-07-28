@@ -179,7 +179,7 @@ function dayInfo(index) {
 function renderStats() {
   const empStats = pullEmpData();
   const taskStats = pullTaskData();
-
+  
   while (stats.children.length > 0) {
     stats.removeChild(stats.children[0]);
   }
@@ -215,7 +215,7 @@ function renderStats() {
     }
 
     const empStat = document.createElement('tr');
-
+    
     const empRow = document.createElement('th');
     empRow.textContent = empDisplay.name;
     empRow.setAttribute('scope', 'row');
@@ -224,7 +224,7 @@ function renderStats() {
     rowTasks.textContent = empDisplay.tasks;
 
     const rowDays = document.createElement('td');
-    rowDays.textContent = empDisplay.days;
+    rowDays.textContent = empDisplay.days.join(', ');
 
     empStat.appendChild(empRow);
     empStat.appendChild(rowTasks);

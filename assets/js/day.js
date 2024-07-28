@@ -187,6 +187,11 @@ function taskAssign() {
   }
 };
 
+function setCompanyNameDay() {
+  compName = localStorage.getItem('companyName');
+  console.log(compName)
+  document.getElementById('companyNameDay').textContent = compName;
+}
 
 //Event Listeners
 backBtn.addEventListener('click', function () { redirectPage('index.html') });
@@ -198,3 +203,4 @@ empAssignBtn.addEventListener('click', populateTaskOffCanv);
 // Initialize Day Page
 populateRoster();
 buildDay();
+setCompanyNameDay()
