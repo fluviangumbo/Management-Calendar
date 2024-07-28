@@ -16,11 +16,11 @@ header {
     background-color: rgb(185, 215, 240);
 }
 
-.workstats {
+/* .workstats {
     display: block;
     border-radius: 2rem;
     height: 30px;
-}
+} */
 
 .weekday {
     min-height: 1000px;
@@ -84,12 +84,12 @@ header {
     text-align: center;
 }
 
-#workstats-container-2 {
+/* #workstats-container-2 {
     width: 94%;
     height: 200px;
     margin: 50px;
     align-self: center;
-}
+} */
 
 #weekly-stats-sheet {
     outline: auto;
