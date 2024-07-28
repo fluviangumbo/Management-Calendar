@@ -6,6 +6,7 @@ const allTasks = pullTaskData();
 const allEmps = pullEmpData();
 const taskEl = document.querySelector('#taskDisplay');
 const rosterEl = document.querySelector('#empDisplay');
+const assignError = document.querySelector('#assignIndicator');
 const assignBtn = document.querySelector('#assignmentBtn');
 const empAssignBtn = document.querySelector('#empAssignment');
 
@@ -146,6 +147,9 @@ function populateEmpOffCanv() {
 }
 
 function populateTaskOffCanv() {
+  assignError.textContent = "";
+  assignError.classList.remove('invalid');
+
   let selectElement = document.getElementById('taskSelect');
   let existingTaskData = pullTaskData();
   selectElement.innerHTML = '';
@@ -170,11 +174,17 @@ function taskAssign() {
   const taskToUpdate = tmpTasks.find(task => String(task.id) === selectedTask); // what is String(task.id)? undefined?
 
   const updateIndex = tmpTasks.indexOf(taskToUpdate);
-  taskToUpdate.assigned.push(selectedEmp);
-  tmpTasks.splice(updateIndex, 1, taskToUpdate);
+  if (!taskToUpdate.assigned.includes(selectedEmp)) {
+    taskToUpdate.assigned.push(selectedEmp);
+    tmpTasks.splice(updateIndex, 1, taskToUpdate);
 
-  localStorage.setItem('taskData', JSON.stringify(tmpTasks));
-  location.reload(); // ERROR INVOLVED, REMOVE OTHER ELEMENTS
+    localStorage.setItem('taskData', JSON.stringify(tmpTasks));
+    location.reload();
+  } else {
+    assignError.textContent = "Employee is already assigned."
+    assignError.classList.add('invalid');
+    return;
+  }
 };
 
 
