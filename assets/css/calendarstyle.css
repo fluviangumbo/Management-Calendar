@@ -38,7 +38,7 @@ h2 {
     text-align: center;
 }
 
-.card {
+ .card {
     background-color: white !important;
     border-radius: 5px;
     border-width: 1px;
@@ -58,7 +58,7 @@ h2 {
 .card-header {
     padding-bottom: 10px;
     border-bottom: 2px solid #e7e9eb;
-}
+} 
 
 table {
     width: 100%;
