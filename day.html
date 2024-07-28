@@ -13,17 +13,19 @@
 
 <body>
   <header>
-    <h2>Company Name?</h2>
-    <button type="button" class="btn btn-secondary" id="back">Back</button>
-    <button id="empAssignment" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Assign Tasks</button>
+    <h2 id="companyNameDay" class="d-flex" class="p-3"></h2>
+    <button id="back" class="btn btn-secondary d-flex" type="button">Back</button>
+    <div class="">
+      <button id="empAssignment" class="btn btn-primary mb-2" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Assign Tasks</button>
+    </div>
   </header>
   <div class="wrapper">
     <div class="card">
       <div class="card-header">
         <h2>Employee Roster</h2>
       </div>
-      <div class="card-body">
+      <div class="card-body2">
         <table>
           <section class="grouplist" id="empDisplay">
             <!--Day's employees assigned to a task will render here dynamically-->
@@ -41,26 +43,25 @@
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+      <h2 class="offcanvas-title" id="offcanvasRightLabel">Assign Tasks</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <h2> Assign Tasks </h2>
-
-        <div>
+      <div>
         <!--removed redundant part of offcanvas, previously a list of days-->
-            <select id="nameSelect" class="form-select">
+        <select id="nameSelect" class="form-select">
 
-            </select>
-            <select id="taskSelect" class="form-select">
+        </select>
+        <select id="taskSelect" class="form-select">
 
-            </select>
-            <button type="button" id="assignmentBtn">Assign to Task</button>
-        </div>
+        </select>
+        <button type="button" id="assignmentBtn">Assign to Task</button>
+        <p id="assignIndicator"></p>
+      </div>
 
 
     </div>
-</div>
+  </div>
   <script src="./assets/js/logic.js"></script>
   <script src="./assets/js/day.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

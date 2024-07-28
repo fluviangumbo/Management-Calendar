@@ -45,44 +45,10 @@ daylinks.forEach((link) => {
 });
 
 
-//darkmode stuff commented out for simplicity sake and debugging
-// i may still get to this -nimai
-// function lastKnownMode() {
-
-
-//   if (mode === 'light') {
-//     document.body.classList.replace('dark', mode);
-//     toggleBtn.textContent = '☀️';
-//   } else {
-//     document.body.classList.replace('light', mode);
-//     toggleBtn.textContent = '🌙';
-//   }
-// }
-
-
-// function darkModeToggle() {
-
-//   if (document.body.className == 'light') {
-//     toggleBtn.textContent = '🌙';
-//     document.body.className = 'dark';
-//     localStorage.setItem('mode', 'dark');
-//   } else {
-//     toggleBtn.textContent = '☀️';
-//     document.body.className = 'light';
-//     localStorage.setItem('mode', 'light');
-//   }
-// }
-//DARKMODE^^^^^^^^^^^^^^^^^^^^^^^^
-//NEED BUTTON IN HEADER, ID NAMES MATTER
-
-
-//toggleBtn.addEventListener('click', darkModeToggle);
-
-
 function taskStoreLocalStorage(newTaskData) {
   let existingTaskData = pullTaskData();
   let taskData = existingTaskData;
-  newTaskData.id = existingTaskData.length;
+  newTaskData.id = existingTaskData.length; // I think this is where your id field came from
   taskData.push(newTaskData);
   let updatedTaskData = JSON.stringify(taskData);
   localStorage.setItem('taskData', updatedTaskData);
@@ -113,7 +79,7 @@ function addTask(event) {
     task: taskNameInp.value,
     assigned: [],
     day: taskDayInp.value,
-    startTime: `${taskStartHr}:${taskStartMin} ${taskAMPM}`,
+    startTime: `${taskStartHr.value}:${taskStartMin.value} ${taskAMPM.value}`,
     duration: Number(taskDurationInp.value),
   };
   
@@ -213,7 +179,7 @@ function dayInfo(index) {
 function renderStats() {
   const empStats = pullEmpData();
   const taskStats = pullTaskData();
-
+  
   while (stats.children.length > 0) {
     stats.removeChild(stats.children[0]);
   }
@@ -249,7 +215,7 @@ function renderStats() {
     }
 
     const empStat = document.createElement('tr');
-
+    
     const empRow = document.createElement('th');
     empRow.textContent = empDisplay.name;
     empRow.setAttribute('scope', 'row');
@@ -258,7 +224,7 @@ function renderStats() {
     rowTasks.textContent = empDisplay.tasks;
 
     const rowDays = document.createElement('td');
-    rowDays.textContent = empDisplay.days;
+    rowDays.textContent = empDisplay.days.join(', ');
 
     empStat.appendChild(empRow);
     empStat.appendChild(rowTasks);
