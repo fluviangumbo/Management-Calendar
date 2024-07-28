@@ -21,55 +21,41 @@
                 data-bs-target="#modalInputEmployee">Add
                 Employee</a>
         </div>
-        <!--ABOVE is <a> for modalTaskInput ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
-        <!--removed obsolete btn for old offcanvas-->
+        <!--ABOVE are anchors for the task/employee modals ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 
     </header>
     <section>
         <div class="daycontainer text-center"id="weekchart">
-            <!--justify-content-center(or space between, start, end etc. sets the 
-            positioning of the boxes, hence why the sunday box is now centered.)-->
             <div class="row justify-content-center" id="weekday">
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Monday">
                     <a type="monbutton" class="btn btn-secondary dayLink" data-id="Monday">
                         Mon
                     </a>
                 </div>
-                <!--col-sm-6 states window size equal to or greater than 576px will
-                have a width of 6 out of 12. see bs docs on breakpoints for details
-                https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
-                col- defaults to 12 for each set size.-->
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Tuesday">
                     <a type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday">
                         Tue
                     </a>
-                    <!--<button type="tuesbutton" class="btn btn-secondary dayLink" data-id="Tuesday"></button> - commenting this out so we can see the format that we used to have and troubleshoot the styling this affects -->
-                    
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Wednesday">
-                    <!-- <a href="#modalDay" data-bs-toggle="modal" data-bs-target="#modalDay">- this is how the anchors used to look-->
                     <a type="wedbutton" class="btn btn-secondary dayLink" data-id="Wednesday">
                         Wed
-                    </a>
-                    
+                    </a>                  
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Thursday">
                     <a type="thurbutton" class="btn btn-secondary dayLink" data-id="Thursday">
                         Thur
-                    </a>
-                    
+                    </a>                   
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Friday">
                     <a type="fributton" class="btn btn-secondary dayLink" data-id="Friday">
                         Fri
                     </a>
-                    
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl col-xxl mt-2" id="Saturday">
                     <a type="satbutton" class="btn btn-secondary dayLink" data-id="Saturday">
                         Sat
                     </a>
-                    
                 </div>
                 <div class="col-sm-7 col-md-7 col-lg-7 col-xl col-xxl mt-2" id="Sunday">
                     <a type="sunbutton" class="btn btn-secondary dayLink" data-id="Monday">
@@ -80,7 +66,8 @@
         </div>
     </section>
     <h4 id="assignInstructions">Once you have added some tasks and employees, click on one of the day buttons to view more detailed information and assign tasks!</h4>
-    <!-- work stats.-->
+
+    <!-- work stats table-->
     <section class="workstats" id="workstats-container-2">
         <table class="table table-striped" id="weekly-stats-sheet">
             <thead>
@@ -153,7 +140,6 @@
                         <label for="TaskDurationInp" class="form-label">Duration (hours, max 24): </label>
                         <input type="text" class="form-control" id="TaskDurationInp">
                         <p id="taskIndicator"></p>
-                        <!--for going past the MVP we add details on the task, for now just the name to start.-->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -164,6 +150,7 @@
             </form>
         </div>
     </div>
+
     <!--below is the modal for EMPLOYEE INPUT VVVVVVVVVVVVVVVVVVVVVVV-->
     <div class="modal" tabindex="-1" id="modalInputEmployee">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -180,7 +167,6 @@
                         <label for="lastNameInp" class="form-label">Last Name: </label>
                         <input type="text" class="form-control" id="lastNameInp">
                         <p id="empIndicator"></p>
-                        <!--for going past the MVP we add more details on the emp.-->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -218,7 +204,6 @@
         </div>
     </div>
 
-    <!--removed the old offcanvas task assign since its on day.js now, just taking up space. if needed pull again from day.js-->
     <footer class="d-flex justify-content-center mb-2">
         <a class="btn btn-secondary" href="#companyName">Back to Top</a>
     </footer>
@@ -229,10 +214,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
-        <script src="./assets/js/logic.js"></script>
-        <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/script.js"></script>
         
-
 </body>
-
 </html>

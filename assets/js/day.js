@@ -190,7 +190,7 @@ function taskAssign() {
 function setCompanyNameDay() {
   compName = localStorage.getItem('companyName');
   console.log(compName)
-  document.getElementById('companyNameDay').textContent = compName;
+  document.getElementById('companyNameDay').textContent = `${compName} - ${day}`;
 }
 
 //Event Listeners
