@@ -79,6 +79,10 @@ table {
   margin:2%;
 }
 
+.invalid {
+    color: red;
+}
+
 #empAssignment {
     outline: auto;
     outline-color: rgb(66, 66, 66);
