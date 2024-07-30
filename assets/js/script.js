@@ -64,7 +64,7 @@ function addTask(event) {
     taskIndicatorEl.classList.add('invalid');
 
     return;
-  } else if (Number(taskDurationInp.value) <= 0) {
+  } else if (Number(taskDurationInp.value) <= 0 || isNaN(Number(taskDurationInp.value))) {
     taskIndicatorEl.textContent = "Please enter a positive number for duration.";
     taskIndicatorEl.classList.add('invalid');
 
