@@ -1,4 +1,11 @@
 // Day page consts
+const monBtn = document.querySelector('#mon')
+const tueBtn = document.querySelector('#tue')
+const wedBtn = document.querySelector('#wed')
+const thuBtn = document.querySelector('#thu')
+const friBtn = document.querySelector('#fri')
+const satBtn = document.querySelector('#sat')
+const sunBtn = document.querySelector('#sun')
 
 const day = new URLSearchParams(location.search).get("day");
 const backBtn = document.querySelector('#back');
@@ -194,6 +201,14 @@ function setCompanyNameDay() {
 }
 
 //Event Listeners
+monBtn.addEventListener('click', function () { redirectPage('day.html?day=Monday') });
+tueBtn.addEventListener('click', function () { redirectPage('day.html?day=Tuesday') });
+wedBtn.addEventListener('click', function () { redirectPage('day.html?day=Wednesday') });
+thuBtn.addEventListener('click', function () { redirectPage('day.html?day=Thursday') });
+friBtn.addEventListener('click', function () { redirectPage('day.html?day=Friday') });
+satBtn.addEventListener('click', function () { redirectPage('day.html?day=Saturday') });
+sunBtn.addEventListener('click', function () { redirectPage('day.html?day=Sunday') });
+
 backBtn.addEventListener('click', function () { redirectPage('index.html') });
 assignBtn.addEventListener('click', function () { taskAssign() });
 empAssignBtn.addEventListener('click', populateEmpOffCanv);
